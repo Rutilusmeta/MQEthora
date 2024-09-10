@@ -2,7 +2,7 @@ import React, { useState } from "react"
 import {
   ChatContainer,
   ConversationHeader,
-  MessageInput,
+  // MessageInput,
   MessageList,
   TypingIndicator,
 } from "@chatscope/chat-ui-kit-react"
@@ -12,19 +12,19 @@ import {
   Divider,
   IconButton,
   Typography,
-  useTheme,
+  // useTheme,
 } from "@mui/material"
 import CloseIcon from "@mui/icons-material/Close"
+import DOMPurify from "dompurify"
+import { useHistory, useParams } from "react-router"
+
 import { Message } from "../Messages/Message"
 import { TMessageHistory, TUserChatRooms, useStoreState } from "../../../store"
 import xmpp from "../../../xmpp"
-import DOMPurify from "dompurify"
 import { SystemMessage } from "../Messages/SystemMessage"
 import CustomMessageInput from "./CustomMessageInput"
 import { TProfile } from "../../../pages/Profile/types"
-import { IMessagePosition } from "../../../pages/ChatInRoom/Chat"
 import { getPosition, stripHtml } from "../../../utils"
-import { useHistory, useParams } from "react-router"
 import { createMainMessageForThread } from "../../../utils/createMessage"
 
 interface ThreadContainerProperties {
@@ -56,7 +56,7 @@ const ThreadContainer: React.FC<ThreadContainerProperties> = ({
   profile,
   currentPickedRoom,
   currentRoom,
-  onYReachStart,
+  // onYReachStart,
   sendFile,
   toggleMediaModal,
   toggleTransferDialog,
@@ -73,7 +73,7 @@ const ThreadContainer: React.FC<ThreadContainerProperties> = ({
   const messages = useStoreState((state) => state.historyMessages)
 
   const { roomJID } = useParams<{ roomJID: string }>()
-  const theme = useTheme()
+  // const theme = useTheme()
   const threadWindowMessages = messages.filter(
     (item: TMessageHistory) =>
       item.roomJID.includes(roomJID) &&
@@ -108,11 +108,13 @@ const ThreadContainer: React.FC<ThreadContainerProperties> = ({
     }
   }
   const sendThreadMessage = (button: any) => {
+    console.log(button)
     if (myThreadMessage.trim().length > 0) {
       let userAvatar = ""
       if (profile?.profileImage) {
         userAvatar = profile?.profileImage
       }
+      console.log(userAvatar)
       const clearMessageFromHtml = DOMPurify.sanitize(myThreadMessage)
       const finalMessageTxt = stripHtml(clearMessageFromHtml)
       handleShowInChannel(false)

@@ -1,5 +1,6 @@
-import { TMessageHistory } from "../../../store"
 import React from "react"
+
+import { TMessageHistory } from "../../../store"
 
 export interface IMessage {
   message: TMessageHistory
@@ -8,6 +9,7 @@ export interface IMessage {
 }
 
 export const SystemMessage: React.FC<IMessage> = ({ message, userJid }) => {
+  console.log(userJid)
   return (
     <div
       style={{

@@ -1,10 +1,11 @@
 import React, { useState } from "react"
 import { IconButton } from "@mui/material"
 import LogoutIcon from "@mui/icons-material/Logout"
+import { useHistory } from "react-router"
+
 import { DeleteDialog } from "../DeleteDialog"
 import xmpp from "../../xmpp"
 import { useStoreState } from "../../store"
-import { useHistory } from "react-router"
 
 export interface ILeaveRoomButton {
   roomJid: string
@@ -27,6 +28,7 @@ export const LeaveRoomButton: React.FC<ILeaveRoomButton> = ({ roomJid }) => {
     closeLeaveRoomModal()
     history.push("/chat/none")
   }
+
   return (
     <>
       <IconButton sx={{ color: "black" }} onClick={onButtonClick}>

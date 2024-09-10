@@ -1,5 +1,4 @@
-import React, { useEffect, useMemo, useState } from "react"
-
+import { useMemo, useState } from "react"
 import {
   Dialog,
   DialogContent,
@@ -8,18 +7,18 @@ import {
   Typography,
   TextField,
 } from "@mui/material"
-import { transferCoin } from "../../http"
-
 import SendIcon from "@mui/icons-material/Send"
 import BlockIcon from "@mui/icons-material/Block"
+import ReplyIcon from "@mui/icons-material/Reply"
+import EditIcon from "@mui/icons-material/Edit"
+
+import { transferCoin } from "../../http"
 import xmpp from "../../xmpp"
 import { TMessageHistory, useStoreState } from "../../store"
 import { coinReplacedName, coinsMainName } from "../../config/config"
 import { DOMAIN } from "../../constants"
 import { createPrivateChat } from "../../helpers/chat/createPrivateChat"
 import { useSnackbar } from "../../context/SnackbarContext"
-import ReplyIcon from "@mui/icons-material/Reply"
-import EditIcon from "@mui/icons-material/Edit"
 import { walletToUsername } from "../../utils/walletManipulation"
 const coin = "/coin.png"
 
@@ -46,7 +45,7 @@ const dialogTypes: Record<IDialog, IDialog> = {
 export function ChatTransferDialog({
   open,
   onClose,
-  loading,
+  // loading,
   message,
   onPrivateRoomClick,
   onThreadClick,

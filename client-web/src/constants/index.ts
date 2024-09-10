@@ -1,5 +1,3 @@
-import { config } from "../config"
-
 export const NFMT_TYPES: Record<string, { type: string; color: string }> = {
   "1": { type: "free", color: "chocolate" },
   "2": { type: "silver", color: "grey" },

@@ -5,7 +5,6 @@ import {
   MessageSeparator,
 } from "@chatscope/chat-ui-kit-react"
 import { differenceInHours, format, formatDistance, subDays } from "date-fns"
-import { TMessageHistory } from "../../../store"
 import { useHistory } from "react-router"
 import {
   Card,
@@ -19,6 +18,8 @@ import {
 } from "@mui/material"
 import MoreVertIcon from "@mui/icons-material/MoreVert"
 import { Box } from "@mui/system"
+
+import { TMessageHistory } from "../../../store"
 import xmpp from "../../../xmpp"
 import { IButtons } from "../../../pages/ChatInRoom/Chat"
 import {
@@ -50,7 +51,6 @@ export interface IMessage {
   onMessageButtonClick: (button: IButtons) => void
   toggleTransferDialog: (value: boolean, message: TMessageHistory) => void
   onMediaMessageClick: (value: boolean, message: TMessageHistory) => void
-
   onThreadClick?: () => void
   isThread?: boolean
 }
@@ -389,14 +389,17 @@ export const Message: React.FC<IMessage> = ({
       </Box>
     )
   }
+
   useEffect(() => {
     if (message.data.quickReplies) {
       setButtons(JSON.parse(message.data.quickReplies))
     }
     setMessageDirection(isSameUser ? "outgoing" : "incoming")
   }, [])
+
   if (message.data.isMediafile) {
   }
+
   return (
     <div is={"Message"}>
       {!!position.separator && (

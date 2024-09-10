@@ -1,8 +1,6 @@
 import React from "react"
 import Box from "@mui/material/Box"
-
 import Modal from "@mui/material/Modal"
-import { TCombinedMimeType } from "../../constants"
 import { IconButton } from "@mui/material"
 import CloseIcon from "@mui/icons-material/Close"
 
@@ -20,7 +18,7 @@ const style = {
 interface IChatMediaModal {
   open: boolean
   onClose: () => void
-  mimetype: TCombinedMimeType
+  mimetype: string
   url: string
 }
 

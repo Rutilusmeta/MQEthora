@@ -1,10 +1,11 @@
-import React, { useCallback, useState } from "react"
-import xmpp from "../../xmpp"
+import { useState } from "react"
 import { AudioRecorder, useAudioRecorder } from "react-audio-voice-recorder"
+import { Box, CircularProgress } from "@mui/material"
+
+import xmpp from "../../xmpp"
 import { uploadFile } from "../../http"
 import { TProfile } from "../../pages/Profile/types"
 import { useStoreState } from "../../store"
-import { Box, CircularProgress } from "@mui/material"
 import { useSnackbar } from "../../context/SnackbarContext"
 
 interface IProperties {

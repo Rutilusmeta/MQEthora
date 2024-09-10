@@ -1,5 +1,5 @@
-import { MessageInput } from "@chatscope/chat-ui-kit-react"
 import * as React from "react"
+import { MessageInput } from "@chatscope/chat-ui-kit-react"
 
 interface CustomMessageInputProperties {
   onPaste: any

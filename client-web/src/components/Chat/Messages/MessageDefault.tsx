@@ -1,8 +1,9 @@
-import { Avatar, Message } from "@chatscope/chat-ui-kit-react"
-import { TMessageHistory } from "../../../store"
 import React, { useEffect, useState } from "react"
-import xmpp from "../../../xmpp"
+import { Avatar, Message } from "@chatscope/chat-ui-kit-react"
 import { differenceInHours, format, formatDistance, subDays } from "date-fns"
+
+import { TMessageHistory } from "../../../store"
+import xmpp from "../../../xmpp"
 
 interface IMessagesProperties {
   message: TMessageHistory
