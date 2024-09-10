@@ -1,10 +1,11 @@
+import { Box } from "@mui/material"
+
 import defaultLogo from "../../assets/images/logo.png"
 import { TCustomDetails } from "../../pages/AppBuilder/AppBuilder"
 import defaultLoginBackground from "../../assets/images/login_background.png"
 import defaultCoinPath from "../../assets/images/coin.png"
 import profilePic from "../../assets/images/profilepic.png"
 import { isValidHexCode } from "../../utils"
-import { Box } from "@mui/material"
 
 export default function AppMock(properties: TCustomDetails) {
   const {
@@ -20,7 +21,7 @@ export default function AppMock(properties: TCustomDetails) {
     loginScreenBackground && isValidHexCode(loginScreenBackground)
   const backgroundImage = loginScreenBackground || defaultLoginBackground
 
-  //Component to display social button
+  //-- Component to display social button
   function SocialButton(properties: { color: string }) {
     const { color } = properties
     return (
@@ -39,9 +40,9 @@ export default function AppMock(properties: TCustomDetails) {
     )
   }
 
-  //Component to display Title or Logo if provided else will show default
+  //-- Component to display Title or Logo if provided else will show default
   const LogoTitle = () => {
-    const appTitleColor = primaryColor ? primaryColor : "#003E9C"
+    // const appTitleColor = primaryColor ? primaryColor : "#003E9C"
     const appLogo = logo || defaultLogo
 
     return (
@@ -51,7 +52,7 @@ export default function AppMock(properties: TCustomDetails) {
     )
   }
 
-  //Component to show form in 1st screen
+  //-- Component to show form in 1st screen
   const screen0 = () => {
     return (
       <div
@@ -85,7 +86,7 @@ export default function AppMock(properties: TCustomDetails) {
     )
   }
 
-  //Component for balance button
+  //-- Component for balance button
   const BalanceButton = () => {
     const coinPath = coinLogo || defaultCoinPath
     return (
@@ -121,7 +122,7 @@ export default function AppMock(properties: TCustomDetails) {
     )
   }
 
-  //Component to show form in 2nd screen
+  //-- Component to show form in 2nd screen
   const screen1 = () => {
     return (
       <div className="profileScreen" onClick={() => changeScreen(1)}>
@@ -191,11 +192,12 @@ export default function AppMock(properties: TCustomDetails) {
     )
   }
 
-  //Component to display mock mobile outline
+  //-- Component to display mock mobile outline
   const MobileOutline = (properties: { screenIndex: number }) => {
     const { screenIndex } = properties
     const scaleValue = currentScreenIndex === screenIndex ? 1 : 0.9
-    const isRightScreen = currentScreenIndex === 1
+    // const isRightScreen = currentScreenIndex === 1
+
     return (
       <div
         className={"mobileOutline"}
@@ -230,7 +232,10 @@ export default function AppMock(properties: TCustomDetails) {
               flexDirection: "row",
             }}
           >
-            {/* <FontAwesomeIcon className={styles.batteryIcon} icon={faBatteryHalf} /> */}
+            {/* <FontAwesomeIcon
+              className={styles.batteryIcon}
+              icon={faBatteryHalf}
+            /> */}
           </div>
         </div>
         {screenIndex === 0 ? screen0() : null}

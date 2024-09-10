@@ -1,4 +1,5 @@
 import axios from "axios"
+
 import { config } from "../config"
 import { useStoreState } from "../store"
 import { history } from "../utils/history"
@@ -6,6 +7,7 @@ import xmpp from "../xmpp"
 
 let isRefreshing = false
 let failedRequestsQueue = []
+
 export const http = axios.create({
   baseURL: config.API_URL,
 })
@@ -16,12 +18,12 @@ const addRequestToQueue = (config: any) => {
   })
 }
 
-// Process the queued requests
+//-- Process the queued requests
 const processQueue = (newAccessToken: string) => {
   console.log(failedRequestsQueue)
   for (const request of failedRequestsQueue) {
     if (newAccessToken) {
-      // Update the access token in the request header
+      //-- Update the access token in the request header
       request.config.headers["Authorization"] = newAccessToken
     }
 
@@ -55,6 +57,7 @@ export function refresh(): Promise<{
       })
   })
 }
+
 const onLogout = () => {
   useStoreState.getState().clearUser()
   xmpp.stop()
@@ -82,7 +85,7 @@ http.interceptors.response.use(undefined, async (error) => {
 
     request._retry = true
     if (isRefreshing) {
-      // Add the request to the queue
+      //-- Add the request to the queue
       const retryOriginalRequest = addRequestToQueue(request)
 
       return retryOriginalRequest

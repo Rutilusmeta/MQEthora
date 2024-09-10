@@ -1,4 +1,3 @@
-//interfaces
 interface TActionStrip {
   currentScreenIndex: number
   screenSet: {
@@ -16,7 +15,7 @@ export function ActionStrip(properties: TActionStrip) {
     screenSet,
     handleNextClick,
     handlePrevClick,
-    handleSubmit,
+    // handleSubmit,
   } = properties
 
   return (
@@ -41,10 +40,10 @@ export function ActionStrip(properties: TActionStrip) {
         </div>
       </div>
       {/* <div className={"rightActionStrip"}>
-                <button className="submitButton" onClick={() => handleSubmit()}>
-                    <p>Submit and Build</p>
-                </button>
-            </div> */}
+        <button className="submitButton" onClick={() => handleSubmit()}>
+          <p>Submit and Build</p>
+        </button>
+      </div> */}
       <style>
         {`
                     .actionStrip {

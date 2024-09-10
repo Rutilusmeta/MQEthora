@@ -2,13 +2,13 @@ import { TableHead, TableRow, TableCell, Tooltip, Box } from "@mui/material"
 import InfoIcon from "@mui/icons-material/Info"
 import { FC } from "react"
 
-    // displayName => displayName
-    // users => totalRegistered
-    // sessions => totalSessions
-    // api => totalApiCalls
-    // files => totalFiles
-    // web3 => totalTransactions
-    // createdAt => createdAt
+// displayName => displayName
+// users => totalRegistered
+// sessions => totalSessions
+// api => totalApiCalls
+// files => totalFiles
+// web3 => totalTransactions
+// createdAt => createdAt
 
 export type CellId =
   | "displayName"
@@ -52,7 +52,6 @@ const headCells: readonly HeadCell[] = [
     id: "totalSessions",
     numeric: true,
     disablePadding: false,
-
     label: "Sessions",
     description: "User sessions (total vs 24h)",
     align: "center",
@@ -93,7 +92,6 @@ const headCells: readonly HeadCell[] = [
     id: "createdAt",
     numeric: true,
     disablePadding: false,
-
     label: "Created",
     description: "App creation date",
     align: "center",
@@ -102,7 +100,6 @@ const headCells: readonly HeadCell[] = [
     id: "actions",
     numeric: true,
     disablePadding: false,
-
     label: "Actions",
     align: "right",
   },

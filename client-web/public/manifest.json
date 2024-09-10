@@ -1,6 +1,6 @@
 {
-  "short_name": "React App",
-  "name": "Create React App Sample",
+  "short_name": "MQSuperApp",
+  "name": "MQ Super App based on Ethora",
   "icons": [
     {
       "src": "favicon.ico",
