@@ -1,5 +1,4 @@
-import React, { useEffect, useRef, useState } from "react"
-
+import React, { useEffect, useState } from "react"
 import {
   Box,
   Button,
@@ -19,17 +18,18 @@ import {
 } from "@mui/material"
 import AddCircleIcon from "@mui/icons-material/AddCircle"
 import CloseIcon from "@mui/icons-material/Close"
+import { format } from "date-fns"
+
 import { UsersTableToolbar } from "./Toolbar"
 import { UsersTableHead } from "./Head"
 import { UsersActionModal } from "../UsersActionModal"
 import { IOtherUserACL, IUser, exportUsersCsv, getAppUsers } from "../../http"
-import { TApp, useStoreState } from "../../store"
+import { useStoreState } from "../../store"
 import NewUserModal from "../../pages/Owner/NewUserModal"
 import { EditAcl } from "../EditAcl"
 import NoDataImage from "../NoDataImage"
 import { UsersTableRow } from "./UsersTableRow"
 import { useSnackbar } from "../../context/SnackbarContext"
-import { format } from "date-fns"
 
 type Order = "asc" | "desc"
 
@@ -144,6 +144,7 @@ export default function UsersTable({ currentApp, onAppChange }: Properties) {
     event: React.ChangeEvent<unknown>,
     tablePage: number
   ) => {
+    console.log(event)
     const limit = rowsPerPage
     const offset = tablePage * limit
     const fetchedUsers = await getUsers(
@@ -187,6 +188,7 @@ export default function UsersTable({ currentApp, onAppChange }: Properties) {
     event: React.MouseEvent<unknown>,
     property: keyof IUser
   ) => {
+    console.log(event)
     const isAsc = orderBy === property && order === "asc"
     const currentOrder = isAsc ? "desc" : "asc"
     const limit = rowsPerPage
@@ -215,6 +217,7 @@ export default function UsersTable({ currentApp, onAppChange }: Properties) {
   }
 
   const handleClick = (event: React.MouseEvent<unknown>, user: IUser) => {
+    console.log(event)
     const selectedIndex = selectedIds.findIndex((item) => item._id === user._id)
     const mappedUser: TSelectedIds = {
       _id: user._id,

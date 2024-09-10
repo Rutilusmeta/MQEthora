@@ -12,13 +12,14 @@ import {
   TextField,
   Typography,
 } from "@mui/material"
+
 import { useSnackbar } from "../context/SnackbarContext"
 import {
   addTagToUser,
-  deleteUsers,
+  // deleteUsers,
   removeTagFromUser,
   resetUsersPasswords,
-  setUserTags,
+  // setUserTags,
 } from "../http"
 import { ModalType, TSelectedIds } from "./UsersTable/UsersTable"
 import { getUniqueTagsFromUsers } from "../utils/getUniqueTagsFromUsers"
@@ -98,19 +99,21 @@ export function UsersActionModal({
     }
     setLoading(false)
   }
-  const removeAllTags = async () => {
-    setLoading(true)
-    try {
-      await setUserTags(appId, [], selectedUsersIds)
-      await updateData()
 
-      showSnackbar("success", "All tags removed")
-      closeModal()
-    } catch {
-      showSnackbar("error", "Something went wrong")
-    }
-    setLoading(false)
-  }
+  // const removeAllTags = async () => {
+  //   setLoading(true)
+  //   try {
+  //     await setUserTags(appId, [], selectedUsersIds)
+  //     await updateData()
+
+  //     showSnackbar("success", "All tags removed")
+  //     closeModal()
+  //   } catch {
+  //     showSnackbar("error", "Something went wrong")
+  //   }
+  //   setLoading(false)
+  // }
+
   const resetPasswords = async () => {
     setLoading(true)
 
@@ -123,18 +126,19 @@ export function UsersActionModal({
     }
     setLoading(false)
   }
-  const deletePickedUsers = async () => {
-    setLoading(true)
-    try {
-      await deleteUsers(appId, selectedUsersIds)
-      await updateData()
-      showSnackbar("success", "Users deleted")
-      closeModal()
-    } catch {
-      showSnackbar("error", "Something went wrong")
-    }
-    setLoading(false)
-  }
+
+  // const deletePickedUsers = async () => {
+  //   setLoading(true)
+  //   try {
+  //     await deleteUsers(appId, selectedUsersIds)
+  //     await updateData()
+  //     showSnackbar("success", "Users deleted")
+  //     closeModal()
+  //   } catch {
+  //     showSnackbar("error", "Something went wrong")
+  //   }
+  //   setLoading(false)
+  // }
 
   const onSubmit = () => {
     switch (type) {

@@ -1,11 +1,8 @@
 import React, { useEffect, useState } from "react"
-import { ACL, IUser } from "../../http"
 import GoogleIcon from "@mui/icons-material/Google"
 import FacebookIcon from "@mui/icons-material/Facebook"
 import MailIcon from "@mui/icons-material/Mail"
 import MoreVertIcon from "@mui/icons-material/MoreVert"
-import DiamondIcon from "@mui/icons-material/Diamond"
-
 import {
   TableRow,
   TableCell,
@@ -17,6 +14,8 @@ import {
   MenuItem,
   Tooltip,
 } from "@mui/material"
+
+import { ACL, IUser } from "../../http"
 import { dateToHumanReadableFormat } from "../../utils"
 import { useStoreState } from "../../store"
 

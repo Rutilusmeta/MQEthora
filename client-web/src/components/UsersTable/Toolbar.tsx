@@ -8,7 +8,9 @@ import {
   alpha,
 } from "@mui/material"
 import DeleteIcon from "@mui/icons-material/Delete"
+
 import { ModalType } from "./UsersTable"
+
 type TSelectedIds = { walletAddress: string; _id: string; appId: string }
 
 interface UsersTableToolbarProperties {
@@ -28,7 +30,6 @@ export function UsersTableToolbar({
           pr: { xs: 1, sm: 1 },
           display: "flex",
           justifyContent: "space-between",
-
           bgcolor: (theme) =>
             alpha(
               theme.palette.primary.main,
@@ -56,7 +57,7 @@ export function UsersTableToolbar({
           {/* <Button
             variant={"outlined"}
             onClick={() => onButtonClick("sendTokens")}
-            sx={{minWidth: 'max-content'}}
+            sx={{ minWidth: "max-content" }}
           >
             Send Tokens
           </Button> */}

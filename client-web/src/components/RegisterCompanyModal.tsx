@@ -10,14 +10,14 @@ import {
   FormControlLabel,
   Checkbox,
   Alert,
-  Button,
   Typography,
 } from "@mui/material"
 import { useFormik } from "formik"
+import CloseIcon from "@mui/icons-material/Close"
+
 import { agreeWithTerms } from "../http"
 import Tnc from "../pages/Signon/Tnc"
 import { useStoreState } from "../store"
-import CloseIcon from "@mui/icons-material/Close"
 import { useSnackbar } from "../context/SnackbarContext"
 
 export interface IRegisterCompanyModal {
@@ -39,7 +39,8 @@ export const RegisterCompanyModal: React.FC<IRegisterCompanyModal> = ({
   const { showSnackbar } = useSnackbar()
 
   const [loading, setLoading] = useState(false)
-  const [error, setError] = useState("")
+  // const [error, setError] = useState("")
+  const [error] = useState("")
   const formik = useFormik({
     initialValues: {
       companyName: "",
@@ -48,6 +49,7 @@ export const RegisterCompanyModal: React.FC<IRegisterCompanyModal> = ({
       setLoading(true)
       try {
         const res = await agreeWithTerms(companyName)
+        console.log(res)
         setUser({ ...user, isAgreeWithTerms: true })
         onClose()
         afterSubmit()
@@ -121,7 +123,7 @@ export const RegisterCompanyModal: React.FC<IRegisterCompanyModal> = ({
                   <p>
                     I agree to the{" "}
                     <span
-                      onClick={(e) => {
+                      onClick={(_e) => {
                         setTermsOpen(true)
                       }}
                       style={{ cursor: "pointer", textDecoration: "underline" }}
@@ -143,7 +145,7 @@ export const RegisterCompanyModal: React.FC<IRegisterCompanyModal> = ({
             >
               <Typography
                 onClick={(e) => {
-                  setTermsOpen(true);
+                  setTermsOpen(true)
                 }}
                 sx={{
                   textDecoration: "underline",

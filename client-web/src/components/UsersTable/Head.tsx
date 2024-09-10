@@ -6,8 +6,9 @@ import {
   TableRow,
   TableSortLabel,
 } from "@mui/material"
-import { IUser } from "../../http"
 import { visuallyHidden } from "@mui/utils"
+
+import { IUser } from "../../http"
 
 type Order = "asc" | "desc"
 

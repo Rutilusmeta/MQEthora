@@ -1,16 +1,9 @@
 import React from "react"
-import {
-  Box,
-  Button,
-  Divider,
-  Grid,
-  Stack,
-  Typography,
-  useTheme,
-} from "@mui/material"
-import { IBlock } from "../pages/Profile/types"
+import { Box, Button, Grid, Typography, useTheme } from "@mui/material"
 import { format } from "date-fns"
 import { Link, useHistory } from "react-router-dom"
+
+import { IBlock } from "../pages/Profile/types"
 
 export interface IBlocksProperties {
   blocks: IBlock[]

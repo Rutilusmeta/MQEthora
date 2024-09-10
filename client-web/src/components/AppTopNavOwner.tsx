@@ -5,20 +5,13 @@ import Toolbar from "@mui/material/Toolbar"
 import IconButton from "@mui/material/IconButton"
 import Typography from "@mui/material/Typography"
 import Menu from "@mui/material/Menu"
-import MenuIcon from "@mui/icons-material/Menu"
 import Container from "@mui/material/Container"
 import Avatar from "@mui/material/Avatar"
-import Button from "@mui/material/Button"
 import MenuItem from "@mui/material/MenuItem"
-import AdbIcon from "@mui/icons-material/Adb"
 import { useHistory } from "react-router-dom"
-import { getBalance } from "../http"
-import ButtonUnstyled from "@mui/base/ButtonUnstyled"
-import { useWeb3React } from "@web3-react/core"
 import { NavLink } from "react-router-dom"
 
 import { useStoreState } from "../store"
-const coinImg = "/coin.png"
 
 function firstLetersFromName(fN: string, lN: string) {
   return `${fN[0].toUpperCase()}${lN[0].toUpperCase()}`
@@ -26,20 +19,19 @@ function firstLetersFromName(fN: string, lN: string) {
 
 const AppTopNavOwner = () => {
   const user = useStoreState((state) => state.user)
-  const balances = useStoreState((state) => state.balance)
+  // const balances = useStoreState((state) => state.balance)
   const clearOwner = useStoreState((state) => state.clearOwner)
   const [anchorElementUser, setAnchorElementUser] =
-    React.useState<null | HTMLElement>(null)
-  const [open, setOpen] = useState(false)
+    useState<null | HTMLElement>(null)
   const history = useHistory()
 
   const handleOpenUserMenu = (event: React.MouseEvent<HTMLElement>) => {
     setAnchorElementUser(event.currentTarget)
   }
 
-  const mainCoinBalance = balances.find(
-    (element) => element.tokenName === "Dappros Platform Token"
-  )
+  // const mainCoinBalance = balances.find(
+  //   (element) => element.tokenName === "Dappros Platform Token"
+  // )
 
   const handleCloseUserMenu = () => {
     setAnchorElementUser(null)

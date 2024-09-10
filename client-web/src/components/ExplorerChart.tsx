@@ -10,6 +10,7 @@ import {
   Legend,
   ResponsiveContainer,
 } from "recharts"
+
 import { TChartData } from "../utils"
 
 interface ExplorerChartProperties {

@@ -7,17 +7,16 @@ import TableHead from "@mui/material/TableHead"
 import TableRow from "@mui/material/TableRow"
 import Paper from "@mui/material/Paper"
 import { Button, Checkbox, Typography } from "@mui/material"
+import { Box } from "@mui/system"
+
 import {
   ACL,
-  getUserAcl,
   IAclBody,
   IOtherUserACL,
   IUser,
-  IUserAcl,
   TPermission,
   updateUserAcl,
 } from "../http"
-import { Box } from "@mui/system"
 import { FullPageSpinner } from "./FullPageSpinner"
 import { useStoreState } from "../store"
 import { useSnackbar } from "../context/SnackbarContext"
@@ -155,7 +154,7 @@ const Row = ({
 
 export const EditAcl: React.FC<IEditAcl> = ({
   updateData,
-  onAclError,
+  // onAclError,
   user,
 }) => {
   const [userAcl, setUserAcl] = useState<IOtherUserACL>({ result: user.acl })
@@ -196,8 +195,8 @@ export const EditAcl: React.FC<IEditAcl> = ({
     }))
   }
   const onNetworkAclChange = (
-    e: React.ChangeEvent<HTMLInputElement>,
-    keyToChange: TKeys
+    e: React.ChangeEvent<HTMLInputElement>
+    // keyToChange: TKeys
   ) => {
     setUserAcl((previous) => ({
       result: {

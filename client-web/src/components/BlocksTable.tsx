@@ -8,8 +8,8 @@ import TableRow from "@mui/material/TableRow"
 import Paper from "@mui/material/Paper"
 import { Box, Typography, useTheme } from "@mui/material"
 import { useHistory } from "react-router"
+
 import { IBlock } from "../pages/Profile/types"
-import { truncateString } from "../utils"
 
 type TProperties = {
   blocks: IBlock[]

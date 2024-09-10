@@ -1,16 +1,16 @@
-import React, { useEffect, useState } from "react"
+import React, { useState } from "react"
 import Box from "@mui/material/Box"
 import IconButton from "@mui/material/IconButton"
 import Typography from "@mui/material/Typography"
 import { default as MuiMenu } from "@mui/material/Menu"
 import MenuIcon from "@mui/icons-material/Menu"
-
 import MenuItem from "@mui/material/MenuItem"
 import { Divider } from "@mui/material"
 import { useWeb3React } from "@web3-react/core"
+import { useHistory } from "react-router"
+
 import { configNFT, configDocuments } from "../config/config"
 import xmpp from "../xmpp"
-import { useHistory } from "react-router"
 import { TUser, useStoreState } from "../store"
 import { IUserAcl } from "../http"
 
@@ -19,7 +19,6 @@ export interface IMenu {}
 const menuAccountSection = (walletAddress: string) => ({
   name: "Wallet",
   visible: true,
-
   items: [
     {
       name: "My Profile",
@@ -27,7 +26,6 @@ const menuAccountSection = (walletAddress: string) => ({
       visible: true,
     },
     { name: "Explorer", id: "/explorer", visible: false },
-
     {
       name: "Transactions",
       id: "/explorer/address/" + walletAddress,
@@ -50,7 +48,7 @@ const menuActionsSection = {
   ],
 }
 
-const idActionsSection = (user: TUser) => ({
+const idActionsSection = (_user: TUser) => ({
   name: "Id",
   visible: true,
   items: [
@@ -60,6 +58,7 @@ const idActionsSection = (user: TUser) => ({
     { name: "Sign out", id: "logout", visible: true },
   ],
 })
+
 const billingSection = (user: TUser) => ({
   name: "Billing",
   visible: !!user.stripeCustomerId || !!user?.company?.length,
@@ -76,10 +75,9 @@ const billingSection = (user: TUser) => ({
     },
   ],
 })
-const userSection = (ACL: IUserAcl) => ({
+const userSection = (_ACL: IUserAcl) => ({
   name: "Users",
   visible: false,
-
   items: [
     {
       name: "Users",
@@ -127,7 +125,8 @@ export const Menu: React.FC<IMenu> = ({}) => {
   const user = useStoreState((state) => state.user)
   const history = useHistory()
   const ACL = useStoreState((state) => state.ACL)
-  const [menuItems, setMenuItems] = useState(initMenuItems(user, ACL))
+  // const [menuItems, setMenuItems] = useState(initMenuItems(user, ACL))
+  const [menuItems] = useState(initMenuItems(user, ACL))
 
   const clearUser = useStoreState((state) => state.clearUser)
 
@@ -154,7 +153,7 @@ export const Menu: React.FC<IMenu> = ({}) => {
     setAnchorElementUser(null)
   }
 
-  const onMenuItemClick = (id: string, type: string) => {
+  const onMenuItemClick = (id: string, _type: string) => {
     if (id === "logout") {
       onLogout()
       handleCloseUserMenu()

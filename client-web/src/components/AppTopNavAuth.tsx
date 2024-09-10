@@ -1,9 +1,8 @@
-import * as React from "react"
 import AppBar from "@mui/material/AppBar"
 import Toolbar from "@mui/material/Toolbar"
 import Typography from "@mui/material/Typography"
 import Container from "@mui/material/Container"
-import { NavLink } from "react-router-dom"
+// import { NavLink } from "react-router-dom"
 
 const AppTopNavAuth = () => {
   return (
@@ -26,7 +25,9 @@ const AppTopNavAuth = () => {
               textDecoration: "none",
             }}
           >
-            {/* <NavLink style={{color: "white"}}  to="/">Ethora</NavLink> */}
+            {/* <NavLink style={{ color: "white" }} to="/">
+              Ethora
+            </NavLink> */}
           </Typography>
         </Toolbar>
       </Container>

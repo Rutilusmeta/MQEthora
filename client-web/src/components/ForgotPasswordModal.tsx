@@ -2,7 +2,7 @@ import React from "react"
 import { LoadingButton } from "@mui/lab"
 import { Box, Dialog, DialogTitle, TextField } from "@mui/material"
 import { useFormik } from "formik"
-import { config } from "../config"
+
 import { useSnackbar } from "../context/SnackbarContext"
 import { httpWithToken } from "../http"
 import { useStoreState } from "../store"
@@ -44,6 +44,7 @@ export const ForgotPasswordModal: React.FC<IForgotPasswordModal> = ({
             email,
           }
         )
+        console.log(res)
         showSnackbar(
           "success",
           "The password reset email has been successfully sent. Please, check your email for further actions."
@@ -56,6 +57,7 @@ export const ForgotPasswordModal: React.FC<IForgotPasswordModal> = ({
       setSubmitting(false)
     },
   })
+
   return (
     <Dialog maxWidth={false} open={open} onClose={onClose}>
       <Box sx={{ padding: 2 }}>

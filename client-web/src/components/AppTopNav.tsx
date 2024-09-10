@@ -3,12 +3,12 @@ import AppBar from "@mui/material/AppBar"
 import Box from "@mui/material/Box"
 import Toolbar from "@mui/material/Toolbar"
 import IconButton from "@mui/material/IconButton"
-
 import { Link, useHistory, useLocation } from "react-router-dom"
-
 import ExploreIcon from "@mui/icons-material/Explore"
 import GroupIcon from "@mui/icons-material/Group"
 import StarRateIcon from "@mui/icons-material/StarRate"
+import { Badge } from "@mui/material"
+
 import {
   getBalance,
   getMyAcl,
@@ -17,8 +17,6 @@ import {
 } from "../http"
 import xmpp from "../xmpp"
 import { TActiveRoomFilter, useStoreState } from "../store"
-
-import { Badge } from "@mui/material"
 import { coinsMainName, defaultMetaRoom, ROOMS_FILTERS } from "../config/config"
 import { Menu } from "./Menu"
 import { DOMAIN } from "../constants"
@@ -27,9 +25,10 @@ import { walletToUsername } from "../utils/walletManipulation"
 import defUserImage from "../assets/images/def-ava.png"
 
 const coinImg = "/coin.png"
-function firstLetersFromName(fN: string, lN: string) {
-  return `${fN[0].toUpperCase()}${lN[0].toUpperCase()}`
-}
+
+// function firstLetersFromName(fN: string, lN: string) {
+//   return `${fN[0].toUpperCase()}${lN[0].toUpperCase()}`
+// }
 
 const roomFilters = [
   { name: ROOMS_FILTERS.official, Icon: StarRateIcon },
@@ -87,10 +86,11 @@ const mockAcl = {
     },
   ],
 }
+
 const AppTopNav = () => {
   const user = useStoreState((state) => state.user)
   const apps = useStoreState((state) => state.apps)
-  const userId = useStoreState((state) => state.user._id)
+  // const userId = useStoreState((state) => state.user._id)
   const setACL = useStoreState((state) => state.setACL)
   const history = useHistory()
   const location = useLocation()
@@ -118,13 +118,12 @@ const AppTopNav = () => {
         token,
         walletToUsername(user.walletAddress) + DOMAIN
       )
+      console.log(res)
     } catch (error) {
       console.log(error)
     }
   }
   const getAcl = async () => {
-    // setLoading(true);
-
     try {
       if (user?.ACL?.ownerAccess) {
         setACL(mockAcl)
@@ -135,8 +134,8 @@ const AppTopNav = () => {
     } catch (error) {
       console.log(error)
     }
-    // setLoading(false);
   }
+
   useEffect(() => {
     getAcl()
   }, [apps.length, user.walletAddress])
@@ -167,8 +166,6 @@ const AppTopNav = () => {
       history.push("/chat/" + res.data.result.roomId.roomJid)
     } catch (error) {
       console.log(error, "cannot navigate to room")
-
-      // showError('Error', 'Cannot fetch latest meta room');
     }
   }
 
@@ -272,7 +269,6 @@ const AppTopNav = () => {
                     alignItems: "center",
                     paddingX: "5px",
                     borderRadius: "5px",
-                    // paddingTop: 1
                   }}
                 >
                   <img
@@ -297,4 +293,5 @@ const AppTopNav = () => {
     </AppBar>
   )
 }
+
 export default AppTopNav
