@@ -1,7 +1,9 @@
 import { Box, Button, Typography } from "@mui/material"
 import { IApiMetaRoom } from "./MetaNavigation"
 import { useHistory } from "react-router"
+
 const coin = "/coin.png"
+
 export const MetaHeader = ({
   room,
   direction,
@@ -43,6 +45,7 @@ export const MetaHeader = ({
       </Box>
     )
   }
+
   return (
     <Box
       sx={{

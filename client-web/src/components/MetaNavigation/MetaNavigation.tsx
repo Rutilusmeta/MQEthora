@@ -1,6 +1,4 @@
 import React, { useEffect, useState } from "react"
-
-import { CompassItem } from "./CompassItem"
 import {
   Box,
   CircularProgress,
@@ -8,12 +6,15 @@ import {
   Modal,
   useTheme,
 } from "@mui/material"
+import ExploreIcon from "@mui/icons-material/Explore"
+
+import { CompassItem } from "./CompassItem"
 import { MetaHeader } from "./MetaHeader"
 import xmpp from "../../xmpp"
 import { httpWithAuth } from "../../http"
-import { CONFERENCEDOMAIN, DOMAIN } from "../../constants"
+import { CONFERENCEDOMAIN } from "../../constants"
 import { useStoreState } from "../../store"
-import ExploreIcon from "@mui/icons-material/Explore"
+
 type IRoom = {
   _id: string
   contractAddress: string
@@ -77,14 +78,14 @@ const getOpositeDirection = (direction: string) => {
 
 // const findRoom = (id: string | undefined, arr: IApiMetaRoom[]) => {
 //   if (!id) {
-//     return null;
+//     return null
 //   }
-//   const room = arr.find((item) => item.idAddress === id);
+//   const room = arr.find((item) => item.idAddress === id)
 //   if (!room) {
-//     return null;
+//     return null
 //   }
-//   return room;
-// };
+//   return room
+// }
 
 const emptyMetaRoom = {
   name: "",
@@ -108,6 +109,7 @@ const style = {
   outline: "none",
 }
 const roomRoute = "/room"
+
 export const MetaNavigation: React.FC<IMetaNavigation> = ({
   chatId,
   open,

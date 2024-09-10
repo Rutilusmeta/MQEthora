@@ -1,5 +1,6 @@
 import { Box, Button } from "@mui/material"
 import { useHistory } from "react-router"
+
 import { CONFERENCEDOMAIN } from "../../constants"
 import { IApiMetaRoom } from "./MetaNavigation"
 
@@ -36,6 +37,7 @@ export const CompassItem = ({
       </Box>
     )
   }
+
   return (
     <Box
       justifyContent={"center"}
