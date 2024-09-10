@@ -1,7 +1,6 @@
-import React, { useEffect, useMemo, useState } from "react"
+import React, { useMemo, useState } from "react"
 import {
   Box,
-  Button,
   Container,
   FormControl,
   FormHelperText,
@@ -11,14 +10,14 @@ import {
   OutlinedInput,
   Typography,
 } from "@mui/material"
-import { useHistory, useLocation, useParams } from "react-router"
-import { httpWithToken } from "../../http"
-import { config } from "../../config"
-import { useSnackbar } from "../../context/SnackbarContext"
-import { FullPageSpinner } from "../../components/FullPageSpinner"
-import { VisibilityOff, Visibility, ErrorRounded } from "@mui/icons-material"
+import { useHistory, useLocation } from "react-router"
+import { VisibilityOff, Visibility } from "@mui/icons-material"
 import { LoadingButton } from "@mui/lab"
 import { FormikErrors, FormikValues, useFormik } from "formik"
+
+import { httpWithToken } from "../../http"
+import { useSnackbar } from "../../context/SnackbarContext"
+import { FullPageSpinner } from "../../components/FullPageSpinner"
 
 export interface IChangeTemporaryPassword {}
 export interface IResetPassword {}
@@ -60,7 +59,8 @@ export const ChangeTempPassword: React.FC<IChangeTemporaryPassword> = ({}) => {
 
   const [showPassword, setShowPassword] = useState(false)
   const [showRepeatedPassword, setShowRepeatedPassword] = useState(false)
-  const [isLoading, setLoading] = useState(false)
+  // const [isLoading, setLoading] = useState(false)
+  const [isLoading] = useState(false)
   const history = useHistory()
   const { showSnackbar } = useSnackbar()
   const handleClickShowPassword = () => setShowPassword((show) => !show)
@@ -96,6 +96,7 @@ export const ChangeTempPassword: React.FC<IChangeTemporaryPassword> = ({}) => {
             password: password,
           }
         )
+        console.log(res)
         history.push({ pathname: "/signIn", search: `?email=${email}` })
         showSnackbar("success", "Password changed successfully")
       } catch (error) {

@@ -8,14 +8,15 @@ $_conversation-unread-top: 0.3em;
 $_conversation-unread-right: 0.8em;
 
 .#{$prefix}-conversation {
-
   $class-name: &;
-  
+
   @include flex-row;
   box-sizing: border-box;
   position: relative;
   font-family: $conversation-font-family;
-  padding:  math.div($conversation-unread-font-size,2) + $_conversation-unread-top 0.8em math.div($conversation-unread-font-size,2) + $_conversation-unread-top 0.8em;
+  padding: math.div($conversation-unread-font-size, 2) +
+    $_conversation-unread-top 0.8em math.div($conversation-unread-font-size, 2) +
+    $_conversation-unread-top 0.8em;
   cursor: pointer;
   justify-content: flex-start;
   color: $conversation-color;
@@ -28,7 +29,7 @@ $_conversation-unread-right: 0.8em;
 
   &:hover {
     background-color: $conversation-hover-bg-color;
-    
+
     > .#{$prefix}-avatar {
       > .#{$prefix}-status {
         > .#{$prefix}-status__bullet {
@@ -41,18 +42,16 @@ $_conversation-unread-right: 0.8em;
     & > .#{$prefix}-avatar > img {
       filter: none;
     }
-    
   }
-  
+
   &#{&}:active {
-    
     color: $conversation-active-color;
     background-color: $conversation-active-bg-color;
     border-top: $conversation-active-border-top;
     border-right: $conversation-active-border-right;
     border-bottom: $conversation-active-border-bottom;
     border-left: $conversation-active-border-left;
-    
+
     > .#{$prefix}-avatar {
       > .#{$prefix}-status {
         > .#{$prefix}-status__bullet {
@@ -60,11 +59,9 @@ $_conversation-unread-right: 0.8em;
         }
       }
     }
-    
   }
 
   &#{&}--active {
-    
     color: $conversation-name-activated-color;
     background-color: $conversation-activated-bg-color;
     font-weight: $conversation-activated-font-weight;
@@ -72,7 +69,7 @@ $_conversation-unread-right: 0.8em;
     border-right: $conversation-activated-border-right;
     border-bottom: $conversation-activated-border-bottom;
     border-left: $conversation-activated-border-left;
-    
+
     > .#{$prefix}-avatar {
       > .#{$prefix}-status {
         > .#{$prefix}-status__bullet {
@@ -85,25 +82,21 @@ $_conversation-unread-right: 0.8em;
       color: $conversation-name-activated-color;
       font-weight: $conversation-name-activated-font-weight;
     }
-    
+
     #{$class-name}__info {
       color: $conversation-info-activated-color;
       font-weight: $conversation-info-activated-font-weight;
     }
-    
   }
-  
+
   > .#{$prefix}-avatar {
     width: $avatar-md-width + 0.1px;
     height: $avatar-md-width + 0.1px;
     margin-right: 1em;
-    
+
     > .#{$prefix}-status {
-      
       border-color: $conversation-bg-color;
-      
     }
-    
   }
 
   > .#{$prefix}-avatar-group {
@@ -111,7 +104,7 @@ $_conversation-unread-right: 0.8em;
     height: $avatar-md-width + 0.1px;
     min-width: $avatar-md-width + 0.1px;
     min-height: $avatar-md-width + 0.1px;
-    padding-right:0 !important;
+    padding-right: 0 !important;
     margin-right: 1em;
   }
 
@@ -120,9 +113,9 @@ $_conversation-unread-right: 0.8em;
     @include flex-column;
     overflow: hidden;
     margin-right: 1.1em;
-    flex-grow:1;
+    flex-grow: 1;
   }
-  
+
   &__operations {
     box-sizing: border-box;
     @include flex-row;
@@ -135,7 +128,7 @@ $_conversation-unread-right: 0.8em;
   &__operations--visible {
     visibility: visible;
   }
-  
+
   &__operations:hover {
     color: lighten($color-text, 40);
   }
@@ -160,13 +153,13 @@ $_conversation-unread-right: 0.8em;
 
   &__last-sender {
     box-sizing: border-box;
-    display:inline;
+    display: inline;
     font-weight: $conversation-last-sender-name-font-weight;
   }
 
   &__info-content {
     box-sizing: border-box;
-    display:inline;
+    display: inline;
     font-weight: $conversation-info-content-font-weight;
   }
 
@@ -177,11 +170,11 @@ $_conversation-unread-right: 0.8em;
     @include flex-row;
     align-items: center;
   }
-  
+
   &__last-activity-time + &__operations {
-    margin-left:0.5em;
+    margin-left: 0.5em;
   }
-  
+
   &__unread-dot {
     box-sizing: content-box;
     @include flex-row;
@@ -198,15 +191,13 @@ $_conversation-unread-right: 0.8em;
     perspective-origin: 50% 50%;
 
     background: radial-gradient(
-                    circle at 3px 3px,
-                    lighten($conversation-unread-dot-color, 17),
-                    $conversation-unread-dot-color
+      circle at 3px 3px,
+      lighten($conversation-unread-dot-color, 17),
+      $conversation-unread-dot-color
     );
-    
   }
 
   &__unread-dot {
-    
     &:hover::before {
       content: "";
       position: absolute;
@@ -219,18 +210,18 @@ $_conversation-unread-right: 0.8em;
       height: 80%;
       width: 40%;
       background: radial-gradient(
-                      circle at 130% 130%,
-                      rgba(255, 255, 255, 0) 0,
-                      rgba(255, 255, 255, 0) 46%,
-                      rgba(255, 255, 255, 0.8) 50%,
-                      rgba(255, 255, 255, 0.8) 58%,
-                      rgba(255, 255, 255, 0) 60%,
-                      rgba(255, 255, 255, 0) 100%
+        circle at 130% 130%,
+        rgba(255, 255, 255, 0) 0,
+        rgba(255, 255, 255, 0) 46%,
+        rgba(255, 255, 255, 0.8) 50%,
+        rgba(255, 255, 255, 0.8) 58%,
+        rgba(255, 255, 255, 0) 60%,
+        rgba(255, 255, 255, 0) 100%
       );
 
       transform: translateX(131%) translateY(58%) rotateZ(168deg) rotateX(10deg);
     }
-    
+
     &:hover::after {
       content: "";
       position: absolute;
@@ -245,20 +236,18 @@ $_conversation-unread-right: 0.8em;
 
       display: block;
       background: radial-gradient(
-                      circle at 50% 80%,
-                      rgba(255, 255, 255, 0),
-                      rgba(255, 255, 255, 0) 74%,
-                      white 80%,
-                      white 84%,
-                      rgba(255, 255, 255, 0) 100%
+        circle at 50% 80%,
+        rgba(255, 255, 255, 0),
+        rgba(255, 255, 255, 0) 74%,
+        white 80%,
+        white 84%,
+        rgba(255, 255, 255, 0) 100%
       );
-
 
       animation: #{$prefix}-unread-anim 2s ease-out infinite;
     }
-    
   }
-  
+
   // Without max width text will not be truncated
   &__unread {
     box-sizing: border-box;
@@ -273,14 +262,9 @@ $_conversation-unread-right: 0.8em;
     background-color: $conversation-unread-bg-color;
     max-width: 40 * $conversation-unread-font-size;
     @include text-truncate;
-    z-index:100; /* For grouped Avatar */
-    
+    z-index: 100; /* For grouped Avatar */
   }
 
-  &__unread:hover::before {
-    
-  }
-  
   @keyframes #{$prefix}-unread-anim {
     0% {
       transform: scale(1);
@@ -302,5 +286,4 @@ $_conversation-unread-right: 0.8em;
       transform: scale(1);
     }
   }
-  
 }

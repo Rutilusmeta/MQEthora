@@ -3,8 +3,8 @@
 $_message-avatar-justify-content: flex-end;
 
 // How far message avatar should be postponed from message (and message from avatar for outgoing)
-$_message-avatar-offset: $message-avatar-width + $message-avatar-horizontal-margin;
-
+$_message-avatar-offset: $message-avatar-width +
+  $message-avatar-horizontal-margin;
 
 .#{$prefix}-message {
   // Local alias
@@ -21,11 +21,11 @@ $_message-avatar-offset: $message-avatar-width + $message-avatar-horizontal-marg
   overflow: hidden;
 
   border-radius: $message-border-radius;
-  
+
   &:only-child {
     margin: $message-only-child-margin;
   }
-  
+
   &:not(:only-child) {
     margin: $message-not-only-child-margin;
   }
@@ -38,7 +38,7 @@ $_message-avatar-offset: $message-avatar-width + $message-avatar-horizontal-marg
     justify-content: $_message-avatar-justify-content;
     width: $message-avatar-width;
   }
-  
+
   &__content-wrapper {
     box-sizing: border-box;
     display: flex;
@@ -69,7 +69,6 @@ $_message-avatar-offset: $message-avatar-width + $message-avatar-horizontal-marg
       margin-left: auto;
       padding-left: 0.8em;
     }
-    
   }
 
   &__footer {
@@ -93,9 +92,8 @@ $_message-avatar-offset: $message-avatar-width + $message-avatar-horizontal-marg
       margin-left: auto;
       padding-left: 0.8em;
     }
-    
   }
-  
+
   &__content {
     box-sizing: border-box;
     color: $message-content-color;
@@ -122,8 +120,8 @@ $_message-avatar-offset: $message-avatar-width + $message-avatar-horizontal-marg
       margin: $message-incoming-avatar-margin;
     }
 
-    & #{$message-class}__content-wrapper {
-    }
+    // & #{$message-class}__content-wrapper {
+    // }
 
     & #{$message-class}__sender-name {
       @if $show-message-incoming-sender-name {
@@ -161,8 +159,8 @@ $_message-avatar-offset: $message-avatar-width + $message-avatar-horizontal-marg
       margin: $message-outgoing-avatar-margin;
     }
 
-    & #{$message-class}__content-wrapper {
-    }
+    // & #{$message-class}__content-wrapper {
+    // }
 
     & #{$message-class}__sender-name {
       @if $show-message-outgoing-sender-name {
@@ -197,12 +195,11 @@ $_message-avatar-offset: $message-avatar-width + $message-avatar-horizontal-marg
       margin-top: $message-monologue-margin-top;
     }
 
-    & #{$message-class}__avatar {
+    // & #{$message-class}__avatar {
+    // }
 
-    }
-
-    & #{$message-class}__content-wrapper {
-    }
+    // & #{$message-class}__content-wrapper {
+    // }
 
     & #{$message-class}__sender-name {
       @if $show-message-incoming-single-sender-name {
@@ -231,9 +228,9 @@ $_message-avatar-offset: $message-avatar-width + $message-avatar-horizontal-marg
     &:not(:first-child) {
       margin-top: $message-monologue-margin-top;
     }
-    
-    & #{$message-class}__content-wrapper {
-    }
+
+    // & #{$message-class}__content-wrapper {
+    // }
 
     & #{$message-class}__sender-name {
       @if $show-message-incoming-first-sender-name {
@@ -259,12 +256,11 @@ $_message-avatar-offset: $message-avatar-width + $message-avatar-horizontal-marg
   &#{$message-class}--incoming#{$message-class}--last {
     border-radius: $message-incoming-last-border-radius;
 
-    & #{$message-class}__avatar {
-      
-    }
+    // & #{$message-class}__avatar {
+    // }
 
-    & #{$message-class}__content-wrapper {
-    }
+    // & #{$message-class}__content-wrapper {
+    // }
 
     & #{$message-class}__sender-name {
       @if $show-message-incoming-last-sender-name {
@@ -294,12 +290,11 @@ $_message-avatar-offset: $message-avatar-width + $message-avatar-horizontal-marg
       margin-top: $message-monologue-margin-top;
     }
 
-    & #{$message-class}__avatar {
-      
-    }
+    // & #{$message-class}__avatar {
+    // }
 
-    & #{$message-class}__content-wrapper {
-    }
+    // & #{$message-class}__content-wrapper {
+    // }
 
     & #{$message-class}__sender-name {
       @if $show-message-outgoing-single-sender-name {
@@ -323,15 +318,14 @@ $_message-avatar-offset: $message-avatar-width + $message-avatar-horizontal-marg
   // Modifier: First outgoing message
   &#{$message-class}--outgoing#{$message-class}--first {
     border-radius: $message-outgoing-first-border-radius;
-    
-    margin-top: $message-monologue-margin-top;
-    
-    & #{$message-class}__avatar {
-      
-    }
 
-    & #{$message-class}__content-wrapper {
-    }
+    margin-top: $message-monologue-margin-top;
+
+    // & #{$message-class}__avatar {
+    // }
+
+    // & #{$message-class}__content-wrapper {
+    // }
 
     & #{$message-class}__sender-name {
       @if $show-message-outgoing-first-sender-name {
@@ -357,12 +351,11 @@ $_message-avatar-offset: $message-avatar-width + $message-avatar-horizontal-marg
   &#{$message-class}--outgoing#{$message-class}--last {
     border-radius: $message-outgoing-last-border-radius;
 
-    & #{$message-class}__avatar {
-      
-    }
+    // & #{$message-class}__avatar {
+    // }
 
-    & #{$message-class}__content-wrapper {
-    }
+    // & #{$message-class}__content-wrapper {
+    // }
 
     & #{$message-class}__sender-name {
       @if $show-message-outgoing-last-sender-name {
@@ -382,7 +375,7 @@ $_message-avatar-offset: $message-avatar-width + $message-avatar-horizontal-marg
       border-radius: $message-outgoing-content-last-border-radius;
     }
   }
-  
+
   // Free space instead of avatar
   &--incoming#{$message-class}--avatar-spacer {
     margin-left: $_message-avatar-offset;
@@ -391,95 +384,84 @@ $_message-avatar-offset: $message-avatar-width + $message-avatar-horizontal-marg
   &--outgoing#{$message-class}--avatar-spacer {
     margin-right: $_message-avatar-offset;
   }
-  
+
   // Avatar position
   // By default incoming and default message has avatar on left and outoging has avatar on right.
   // This can be changed by adding --avatar-left or avatar-right modifier
   &--avatar-tl {
-
     #{$message-class}__avatar {
-      justify-content:flex-start;
-      order:0;
+      justify-content: flex-start;
+      order: 0;
       margin-right: $message-avatar-horizontal-margin;
-      margin-left:0;
-    }
-    
-    #{$message-class}__message-wrapper {
-      order:1;
+      margin-left: 0;
     }
 
+    #{$message-class}__message-wrapper {
+      order: 1;
+    }
   }
 
   &--avatar-tr {
     #{$message-class}__avatar {
-      justify-content:flex-start;
-      order:1;
+      justify-content: flex-start;
+      order: 1;
       margin-left: $message-avatar-horizontal-margin;
-      margin-right:0;
+      margin-right: 0;
     }
     #{$message-class}__message-wrapper {
-      order:0;
+      order: 0;
     }
   }
 
   &--avatar-br {
-
     #{$message-class}__avatar {
-      justify-content:flex-end;
-      order:1;
+      justify-content: flex-end;
+      order: 1;
       margin-left: $message-avatar-horizontal-margin;
-      margin-right:0;
+      margin-right: 0;
     }
 
     #{$message-class}__message-wrapper {
-      order:0;
+      order: 0;
     }
-
   }
 
   &--avatar-bl {
-
     #{$message-class}__avatar {
-      justify-content:flex-end;
-      order:0;
+      justify-content: flex-end;
+      order: 0;
       margin-right: $message-avatar-horizontal-margin;
-      margin-left:0;
+      margin-left: 0;
     }
 
     #{$message-class}__message-wrapper {
-      order:1;
+      order: 1;
     }
-
   }
 
   &--avatar-cl {
-
     #{$message-class}__avatar {
-      justify-content:center;
-      order:0;
+      justify-content: center;
+      order: 0;
       margin-right: $message-avatar-horizontal-margin;
-      margin-left:0;
+      margin-left: 0;
     }
 
     #{$message-class}__message-wrapper {
-      order:1;
+      order: 1;
     }
-
   }
 
   &--avatar-cr {
-
     #{$message-class}__avatar {
-      justify-content:center;
-      order:1;
+      justify-content: center;
+      order: 1;
       margin-left: $message-avatar-horizontal-margin;
-      margin-right:0;
+      margin-right: 0;
     }
 
     #{$message-class}__message-wrapper {
-      order:0;
+      order: 0;
     }
-
   }
-  
 }

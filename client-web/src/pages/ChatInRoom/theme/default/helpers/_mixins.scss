@@ -36,7 +36,7 @@
 }
 
 // Mixins for status size
-// 
+//
 
 $bullet-class: #{$prefix}-status__bullet;
 
@@ -80,36 +80,35 @@ $bullet-class: #{$prefix}-status__bullet;
 
 // Tablica z rozmiarami klucz wartość
 $status-sizes: (
-        "xs": $status-xs-width,
-        "sm": $status-sm-width,
-        "md": $status-md-width,
-        "lg": $status-lg-width
+  "xs": $status-xs-width,
+  "sm": $status-sm-width,
+  "md": $status-md-width,
+  "lg": $status-lg-width,
 );
 
 $status-font-sizes: (
-        "xs": $status-xs-fontsize,
-        "sm": $status-sm-fontsize,
-        "md": $status-md-fontsize,
-        "lg": $status-lg-fontsize
+  "xs": $status-xs-fontsize,
+  "sm": $status-sm-fontsize,
+  "md": $status-md-fontsize,
+  "lg": $status-lg-fontsize,
 );
 
-@mixin status-size($size, $border-width:0, $named:false) {
-  $element-width: map_get($status-sizes, $size) + 2*$border-width;
-  $bullet-width: $element-width - 2*$border-width;
+@mixin status-size($size, $border-width: 0, $named: false) {
+  $element-width: map_get($status-sizes, $size) + 2 * $border-width;
+  $bullet-width: $element-width - 2 * $border-width;
   font-size: map_get($status-font-sizes, $size);
-  
-  @if ( $named == false ) {
+
+  @if ($named == false) {
     width: $element-width;
     height: $element-width;
   } @else {
     width: auto;
     height: auto;
-  } 
-  
+  }
+
   .#{$bullet-class} {
     width: $bullet-width;
     min-width: $bullet-width;
     height: $bullet-width;
   }
-  
 }

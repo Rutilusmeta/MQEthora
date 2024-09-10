@@ -2,18 +2,17 @@
 @import "../helpers/mixins";
 
 .#{$prefix}-status {
-
   box-sizing: border-box;
   $status-class: &;
   $bullet-class: #{$status-class}__bullet;
   $name-class: #{$status-class}__name;
-  
-  position:relative;
+
+  position: relative;
   @include flex-row;
   align-items: center;
   flex-wrap: nowrap;
   font-size: $status-md-fontsize;
-  
+
   #{$bullet-class} {
     box-sizing: content-box;
     width: $status-md-width;
@@ -25,26 +24,25 @@
     perspective: 200px;
     perspective-origin: 50% 50%;
     // End Bubble
-    
   }
-  
+
   &--selected {
     color: $status-selected-color;
     background-color: $status-selected-bg-color;
   }
-  
+
   &--named {
     width: auto;
-    height:auto;
+    height: auto;
   }
-  
+
   &__name {
     margin: $status-name-margin;
     line-height: 1.5;
   }
-  
+
   @at-root .#{$prefix}-avatar:hover #{$bullet-class}:before,
-  &:hover #{$bullet-class}:before {
+    &:hover #{$bullet-class}:before {
     box-sizing: border-box;
     content: "";
     position: absolute;
@@ -57,18 +55,18 @@
     height: 80%;
     width: 40%;
     background: radial-gradient(
-                    circle at 130% 130%,
-                    rgba(255, 255, 255, 0) 0,
-                    rgba(255, 255, 255, 0) 46%,
-                    rgba(255, 255, 255, 0.8) 50%,
-                    rgba(255, 255, 255, 0.8) 58%,
-                    rgba(255, 255, 255, 0) 60%,
-                    rgba(255, 255, 255, 0) 100%
+      circle at 130% 130%,
+      rgba(255, 255, 255, 0) 0,
+      rgba(255, 255, 255, 0) 46%,
+      rgba(255, 255, 255, 0.8) 50%,
+      rgba(255, 255, 255, 0.8) 58%,
+      rgba(255, 255, 255, 0) 60%,
+      rgba(255, 255, 255, 0) 100%
     );
 
     transform: translateX(131%) translateY(58%) rotateZ(168deg) rotateX(10deg);
   }
-  
+
   @at-root .#{$prefix}-avatar:hover #{$bullet-class}:after, // For hover on parent avatar
   &:hover #{$bullet-class}:after {
     box-sizing: border-box;
@@ -77,7 +75,7 @@
     top: 5%;
     left: 10%;
     width: 80%;
-    height: 80%;  
+    height: 80%;
     border-radius: 100%;
     filter: blur(1px);
     z-index: 2;
@@ -85,90 +83,81 @@
 
     display: block;
     background: radial-gradient(
-                    circle at 50% 80%,
-                    rgba(255, 255, 255, 0),
-                    rgba(255, 255, 255, 0) 74%,
-                    white 80%,
-                    white 84%,
-                    rgba(255, 255, 255, 0) 100%
+      circle at 50% 80%,
+      rgba(255, 255, 255, 0),
+      rgba(255, 255, 255, 0) 74%,
+      white 80%,
+      white 84%,
+      rgba(255, 255, 255, 0) 100%
     );
-    
 
     animation: #{$prefix}-bubble-anim 2s ease-out infinite;
   }
-  
-  
-  &--available {
 
+  &--available {
     #{$bullet-class} {
       background: radial-gradient(
-                      circle at 3px 3px,
-                      lighten($status-available-color, 10),
-                      $status-available-color
+        circle at 3px 3px,
+        lighten($status-available-color, 10),
+        $status-available-color
       );
     }
-    
+
     #{$name-class} {
       color: $status-available-name-color;
     }
-    
   }
-     
+
   &--unavailable {
     #{$bullet-class} {
       background: radial-gradient(
-                      circle at 3px 3px,
-                      lighten($status-unavailable-color, 25),
-                      $status-unavailable-color
+        circle at 3px 3px,
+        lighten($status-unavailable-color, 25),
+        $status-unavailable-color
       );
     }
 
     #{$name-class} {
       color: $status-unavailable-name-color;
     }
-    
   }
-  
-  &--away {
 
+  &--away {
     #{$bullet-class} {
       background: radial-gradient(
-                      circle at 3px 3px,
-                      lighten($status-away-color, 35),
-                      $status-away-color
+        circle at 3px 3px,
+        lighten($status-away-color, 35),
+        $status-away-color
       );
     }
 
     #{$name-class} {
       color: $status-away-name-color;
     }
-    
   }
-  
-  &--dnd {
 
+  &--dnd {
     #{$bullet-class} {
       background-color: $status-dnd-color;
       background: radial-gradient(
-                      circle at 3px 3px,
-                      lighten($status-dnd-color, 30),
-                      $status-dnd-color
+        circle at 3px 3px,
+        lighten($status-dnd-color, 30),
+        $status-dnd-color
       );
     }
-    
+
     #{$name-class} {
       color: $status-dnd-name-color;
     }
-    
   }
 
   &--invisible {
     #{$bullet-class} {
       background-color: $status-invisible-color;
       background: radial-gradient(
-                      circle at 3px 3px,
-                      lighten($status-invisible-color, 25),
-                      $status-invisible-color
+        circle at 3px 3px,
+        lighten($status-invisible-color, 25),
+        $status-invisible-color
       );
     }
 
@@ -176,23 +165,22 @@
       color: $status-invisible-name-color;
     }
   }
-  
+
   // Eager to chat
   &--eager {
     #{$bullet-class} {
       background: radial-gradient(
-                      circle at 3px 3px,
-                      lighten($status-eager-color, 40),
-                      $status-eager-color
+        circle at 3px 3px,
+        lighten($status-eager-color, 40),
+        $status-eager-color
       );
     }
 
     #{$name-class} {
       color: $status-eager-name-color;
     }
-    
   }
-  
+
   // Sized
   &--xs:not(&--named) {
     @include status-size("xs");
@@ -219,7 +207,7 @@
       height: $status-fluid-width;
     }
   }
-  
+
   @keyframes #{$prefix}-bubble-anim {
     0% {
       transform: scale(1);
@@ -241,5 +229,4 @@
       transform: scale(1);
     }
   }
-    
 }

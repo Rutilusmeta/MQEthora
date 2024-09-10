@@ -12,7 +12,7 @@
   flex-wrap: nowrap;
   justify-content: space-between;
   align-items: center;
-  
+
   &::before,
   &::after {
     box-sizing: border-box;
@@ -22,7 +22,7 @@
     flex-grow: 1;
     height: 1px;
   }
-  
+
   &:not(:empty)::before {
     margin: $message-separator-left-line-margin;
   }
@@ -30,5 +30,4 @@
   &:not(:empty)::after {
     margin: $message-separator-right-line-margin;
   }
-  
 }

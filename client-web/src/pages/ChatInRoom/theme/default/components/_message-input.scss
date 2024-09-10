@@ -6,25 +6,33 @@ $_message-input-overflow: visible;
 $_message-input-content-editor-overflow: visible;
 
 // Don to override this value (no !default)
-$_message-input-content-editor-border-vertical-width: $message-input-content-editor-border-top-width + $message-input-content-editor-border-bottom-width;
+$_message-input-content-editor-border-vertical-width: $message-input-content-editor-border-top-width +
+  $message-input-content-editor-border-bottom-width;
 // Don to override this value (no !default)
-$_message-input-content-editor-border-horizontal-width: $message-input-content-editor-border-left-width + $message-input-content-editor-border-right-width;
+$_message-input-content-editor-border-horizontal-width: $message-input-content-editor-border-left-width +
+  $message-input-content-editor-border-right-width;
 
 // Calculated - do not override
-$_message-input-content-editor-padding-vertical: $message-input-content-editor-container-padding-top + $message-input-content-editor-container-padding-bottom;
-$_message-input-content-editor-padding-horizontal: $message-input-content-editor-container-padding-left + $message-input-content-editor-container-padding-right;
+$_message-input-content-editor-padding-vertical: $message-input-content-editor-container-padding-top +
+  $message-input-content-editor-container-padding-bottom;
+$_message-input-content-editor-padding-horizontal: $message-input-content-editor-container-padding-left +
+  $message-input-content-editor-container-padding-right;
 
 // Calculated - do not override
-$_message-input-content-editor-container-min-height: $message-input-content-editor-container-line-height + $_message-input-content-editor-padding-vertical + $_message-input-content-editor-border-vertical-width;
+$_message-input-content-editor-container-min-height: $message-input-content-editor-container-line-height +
+  $_message-input-content-editor-padding-vertical +
+  $_message-input-content-editor-border-vertical-width;
 
 // Calculated - do not override
-$_message-input-content-editor-container-max-height: $message-input-max-lines * $message-input-content-editor-container-line-height + $_message-input-content-editor-padding-vertical + $_message-input-content-editor-border-vertical-width;
+$_message-input-content-editor-container-max-height: $message-input-max-lines *
+  $message-input-content-editor-container-line-height +
+  $_message-input-content-editor-padding-vertical +
+  $_message-input-content-editor-border-vertical-width;
 
 .#{$prefix}-message-input {
-
   // Local alias
   $message-input-class: &;
-  
+
   @include flex-row;
   position: relative;
   background-color: $message-input-bg-color;
@@ -38,45 +46,44 @@ $_message-input-content-editor-container-max-height: $message-input-max-lines * 
   flex-shrink: 0;
 
   &__content-editor-wrapper {
-    box-sizing: border-box;  
+    box-sizing: border-box;
     position: relative;
     background-color: $message-input-content-editor-wrapper-bg-color;
     margin: $message-input-content-editor-wrapper-margin;
     padding: $message-input-content-editor-wrapper-padding;
     border-radius: $message-input-content-editor-wrapper-border-radius;
-    flex-grow:1;
+    flex-grow: 1;
 
     #{$message-input-class}--disabled & {
       background-color: $message-input-content-editor-disabled-bg-color;
       color: $message-input-content-editor-disabled-color;
     }
-    
   }
-  
+
   &__content-editor-container {
     box-sizing: border-box;
-    position:relative;
+    position: relative;
     background-color: $message-input-content-editor-container-bg-color;
     @include flex-column;
     align-items: stretch;
-    overflow:hidden;
-    overflow-y:auto;
+    overflow: hidden;
+    overflow-y: auto;
     font-size: $message-input-content-editor-container-font-size;
     line-height: $message-input-content-editor-container-line-height;
     min-height: $_message-input-content-editor-container-min-height;
     max-height: $_message-input-content-editor-container-max-height;
     padding: $message-input-content-editor-container-padding;
     scroll-padding: $message-input-content-editor-container-padding-bottom;
-    
+
     #{$message-input-class}--disabled & {
       color: $message-input-content-editor-disabled-color;
       background-color: transparent;
     }
   }
-  
+
   &__content-editor {
     box-sizing: border-box;
-    flex-grow:1;
+    flex-grow: 1;
     background-color: $message-input-content-editor-bg-color;
     font-family: $message-input-content-editor-font-family;
     outline: 0;
@@ -92,26 +99,25 @@ $_message-input-content-editor-container-max-height: $message-input-max-lines * 
       background-color: transparent; // Because bg color is from parent and we are using alpha
       color: $message-input-content-editor-disabled-color;
     }
-    
   }
-  
+
   &__content-editor[data-placeholder]:empty:before {
     box-sizing: border-box;
     content: attr(data-placeholder);
     color: $message-input-placeholder-color;
     display: block;
-    cursor:text;
+    cursor: text;
   }
-  
+
   &__tools {
     @include flex-row;
     box-sizing: border-box;
     .#{$prefix}-button {
-      font-size:1.2em;
-      margin-top:0;
-      margin-bottom:0;
+      font-size: 1.2em;
+      margin-top: 0;
+      margin-bottom: 0;
     }
-    
+
     .#{$prefix}-button--send {
       align-self: flex-end;
     }
@@ -119,7 +125,6 @@ $_message-input-content-editor-container-max-height: $message-input-max-lines * 
     .#{$prefix}-button--attachment {
       align-self: flex-end;
     }
-    
   }
 
   &__tools:first-child {
@@ -139,5 +144,4 @@ $_message-input-content-editor-container-max-height: $message-input-max-lines * 
       margin-right: 0;
     }
   }
-  
 }

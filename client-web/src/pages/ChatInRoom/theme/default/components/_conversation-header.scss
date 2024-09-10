@@ -2,9 +2,8 @@
 @import "../helpers/mixins";
 
 .#{$prefix}-conversation-header {
-  
   $class-name: &;
-  
+
   box-sizing: border-box;
   color: $conversation-header-color;
   background-color: $conversation-header-bg-color;
@@ -12,8 +11,8 @@
   font-size: $conversation-header-font-size;
   flex-shrink: 0;
   user-select: none;
-  //box-shadow: 0px 2px 5px -2px rgba(0,0,0,0.38);
-  
+  // box-shadow: 0px 2px 5px -2px rgba(0,0,0,0.38);
+
   @include flex-row;
   align-items: stretch;
   border-top: $conversation-header-border-top;
@@ -24,18 +23,18 @@
 
   &__back {
     box-sizing: border-box;
-    margin-right:0.5em;
+    margin-right: 0.5em;
     @include flex-row;
     align-items: center;
     cursor: pointer;
     order: 1;
-    
+
     button {
       font-size: 1.4em;
-      padding:0;
+      padding: 0;
     }
   }
-  
+
   &__avatar {
     box-sizing: border-box;
     width: $avatar-md-width;
@@ -52,7 +51,7 @@
     }
 
     .#{$prefix}-avatar-group {
-      padding-right:0 !important;
+      padding-right: 0 !important;
     }
   }
 
@@ -63,7 +62,7 @@
     flex-grow: 2;
     justify-content: center;
     min-width: $conversation-header-content-min-width; // Required for ellipsis in child elements
-    
+
     #{$class-name}__user-name {
       box-sizing: border-box;
       @include text-truncate;
@@ -80,9 +79,8 @@
       font-weight: normal;
       font-size: 0.9em;
     }
-    
   }
-  
+
   &__actions {
     box-sizing: border-box;
     @include flex-row;
@@ -92,13 +90,13 @@
     margin: $conversation-header-actions-margin;
     order: 4;
     .#{$prefix}-button:not(:first-child) {
-      margin-left:0.2em;
+      margin-left: 0.2em;
     }
-    
+
     .#{$prefix}-button {
-      padding:0;
+      padding: 0;
     }
-    
+
     .#{$prefix}-button.#{$prefix}-button--arrow,
     .#{$prefix}-button.#{$prefix}-button--info,
     .#{$prefix}-button.#{$prefix}-button--voicecall,
@@ -106,17 +104,13 @@
     .#{$prefix}-button.#{$prefix}-button--star,
     .#{$prefix}-button.#{$prefix}-button--adduser,
     .#{$prefix}-button.#{$prefix}-button--ellipsis,
-    .#{$prefix}-button.#{$prefix}-button--ellipsis
-    {
+    .#{$prefix}-button.#{$prefix}-button--ellipsis {
       font-size: 1.4em;
-      color:$conversation-header-action-button-color;
+      color: $conversation-header-action-button-color;
       background-color: $conversation-header-action-button-bg-color;
     }
     .#{$prefix}-button.#{$prefix}-button--ellipsis {
       font-size: 1.3em;
     }
-    
   }
-  
-  
 }

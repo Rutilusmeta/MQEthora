@@ -8,17 +8,7 @@
 // store.userChatRooms is used here. GetUserRooms handler (not here) writes information there but does more than its name so needs refactoring.
 
 import React, { useCallback, useEffect, useMemo, useRef, useState } from "react"
-import xmpp from "../../xmpp"
-import {
-  TActiveRoomFilter,
-  TMessageHistory,
-  TUserChatRooms,
-  useStoreState,
-} from "../../store"
-import { getPublicProfile, uploadFile } from "../../http"
-import { TProfile } from "../Profile/types"
 import { format, formatDistance, subDays } from "date-fns"
-
 import {
   MainContainer,
   Avatar,
@@ -33,8 +23,6 @@ import {
   TypingIndicator,
   MessageModel,
 } from "@chatscope/chat-ui-kit-react"
-import { Message } from "../../components/Chat/Messages/Message"
-import { SystemMessage } from "../../components/Chat/Messages/SystemMessage"
 import {
   IconButton,
   Box,
@@ -46,8 +34,23 @@ import {
 } from "@mui/material"
 import { useParams, useHistory } from "react-router-dom"
 import { useDropzone } from "react-dropzone"
-import { MetaNavigation } from "../../components/MetaNavigation/MetaNavigation"
 import QrCodeIcon from "@mui/icons-material/QrCode"
+import CloseIcon from "@mui/icons-material/Close"
+import EditIcon from "@mui/icons-material/Edit"
+import Dompurify from "dompurify"
+
+import xmpp from "../../xmpp"
+import {
+  TActiveRoomFilter,
+  TMessageHistory,
+  TUserChatRooms,
+  useStoreState,
+} from "../../store"
+import { getPublicProfile, uploadFile } from "../../http"
+import { TProfile } from "../Profile/types"
+import { Message } from "../../components/Chat/Messages/Message"
+import { SystemMessage } from "../../components/Chat/Messages/SystemMessage"
+import { MetaNavigation } from "../../components/MetaNavigation/MetaNavigation"
 import { QrModal } from "../Profile/QrModal"
 import { CONFERENCEDOMAIN } from "../../constants"
 import { ROOMS_FILTERS } from "../../config/config"
@@ -56,12 +59,9 @@ import { ChatTransferDialog } from "../../components/Chat/ChatTransferDialog"
 import { ChatMediaModal } from "../../components/Chat/ChatMediaModal"
 import { ChatAudioMessageDialog } from "../../components/Chat/ChatAudioRecorder"
 import { generateChatLink, getPosition, stripHtml } from "../../utils"
-import CloseIcon from "@mui/icons-material/Close"
-import EditIcon from "@mui/icons-material/Edit"
 import { DeleteDialog } from "../../components/DeleteDialog"
 import { useSnackbar } from "../../context/SnackbarContext"
 import { createMainMessageForThread } from "../../utils/createMessage"
-import Dompurify from "dompurify"
 import { LeaveRoomButton } from "../../components/Chat/LeaveRoomButton"
 import { throttle } from "../../utils/throttle"
 
@@ -212,6 +212,7 @@ export function ChatInRoom() {
       return
     } else {
       const lastMessageID = filteredMessage.id
+      console.log(lastMessageID)
       // xmpp.getPaginatedArchive(currentRoom, String(lastMessageID), 10);
     }
   }
@@ -794,7 +795,7 @@ export function ChatInRoom() {
                       }}
                     >
                       <IconButton
-                        onClick={() => onMenuEditClick(false)}
+                        onClick={() => onMenuEditClick(false, null)}
                         aria-label="close"
                       >
                         <CloseIcon />

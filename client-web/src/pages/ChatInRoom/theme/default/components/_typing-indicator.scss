@@ -7,7 +7,7 @@
   font-family: $typing-indicator-font-family;
   @include flex-row;
   align-items: stretch;
-  
+
   &__indicator {
     box-sizing: inherit;
     background-color: $typing-indicator-indicator-bg-color;

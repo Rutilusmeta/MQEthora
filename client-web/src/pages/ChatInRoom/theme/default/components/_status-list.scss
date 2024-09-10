@@ -2,7 +2,6 @@
 @import "../helpers/mixins";
 
 .#{$prefix}-status-list {
-  
   $status-class: #{$prefix}-status;
 
   box-sizing: border-box;
@@ -11,19 +10,17 @@
   padding: $status-list-padding;
   color: $status-list-color;
   background-color: $status-list-bg-color;
-  
+
   > li {
     box-sizing: border-box;
-    cursor:pointer;
+    cursor: pointer;
     user-select: none;
 
     > .#{$status-class} {
-
       margin: $status-list-item-margin;
       padding: $status-list-item-padding;
-      width:auto;
-      height:auto;
-
+      width: auto;
+      height: auto;
     }
 
     .#{$status-class}--selected {
@@ -34,35 +31,34 @@
         color: $status-list-item-selected-color;
         background-color: $status-list-item-selected-bg-color;
       }
-      
     }
-  
+
     &:hover {
       color: $status-list-item-hover-color;
-      background-color: $status-list-item-hover-bg-color;  
+      background-color: $status-list-item-hover-bg-color;
     }
-    
+
     &:focus {
       color: $status-list-item-focus-color;
       background-color: $status-list-item-focus-bg-color;
     }
-    
+
     &:active {
       color: $status-list-item-active-color;
       background-color: $status-list-item-active-bg-color;
     }
   }
-  
+
   &--xs {
-    >  li  {
+    > li {
       > .#{$status-class} {
         @include status-size("xs", $named: true);
       }
     }
   }
-  
+
   &--sm {
-    >  li  {
+    > li {
       > .#{$status-class} {
         @include status-size("sm", $named: true);
       }
@@ -70,20 +66,18 @@
   }
 
   &--md {
-    >  li  {
+    > li {
       > .#{$status-class} {
         @include status-size("md", $named: true);
       }
     }
   }
-  
-  
+
   &--lg {
-    >  li  {
+    > li {
       > .#{$status-class} {
         @include status-size("lg", $named: true);
       }
     }
   }
-  
 }

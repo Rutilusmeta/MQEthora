@@ -1,5 +1,5 @@
-import React from "react"
 import Container from "@mui/material/Container"
+
 import { ChatInRoom } from "./Chat"
 
 export default function Chat() {
