@@ -300,14 +300,14 @@ export const getGraphs = (
   startDate: string,
   endDate: string
 ) => {
-  const parameters = new URLSearchParams();
-  parameters.append("startDate", startDate);
-  parameters.append("endDate", endDate);
+  const parameters = new URLSearchParams()
+  parameters.append("startDate", startDate)
+  parameters.append("endDate", endDate)
 
   return httpWithAuth().get<GraphData>(
     "/apps/graph-statistic/" + appId + "?" + parameters.toString()
-  );
-};
+  )
+}
 
 export function getBalance(walletAddress: string) {
   const user = useStoreState.getState().user
@@ -600,7 +600,9 @@ export function loginOwner(email: string, password: string) {
 }
 
 export function getApps(offset: number, orderBy: string, order: string) {
-  return httpWithAuth().get(`/apps/?offset=${offset}&orderBy=${orderBy}&order=${order}`)
+  return httpWithAuth().get(
+    `/apps/?offset=${offset}&orderBy=${orderBy}&order=${order}`
+  )
 }
 
 export function changeUserDefaults(appId: string, data: IUserDefaults) {
@@ -641,7 +643,7 @@ export function getAppUsers(
   orderBy: string = "createdAt",
   order: string = "asc"
 ) {
-  const owner = useStoreState.getState().user;
+  const owner = useStoreState.getState().user
   const parameters = new URLSearchParams({
     limit: limit.toString(),
     offset: offset.toString(),

@@ -10,8 +10,4 @@ services:
     environment:
       - API_URL=https://xxx.domain.con/v1
       - APP_DOMAIN=domain.com
-    command:
-      [
-        "sh",
-        "/init.sh"
-      ]
+    command: ["sh", "/init.sh"]

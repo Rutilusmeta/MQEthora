@@ -118,7 +118,7 @@ export const Routes = () => {
   useEffect(() => {
     getAppConfig()
   }, [])
-  
+
   useEffect(() => {
     if (appConfig.appToken) {
       getDefaultChats()
@@ -136,6 +136,7 @@ export const Routes = () => {
     setLoading(true)
     try {
       const res = await http.getConfig()
+      console.log(res)
       const firebaseConfig = getFirebaseConfigFromString(
         res.data.result.firebaseWebConfigString
       )

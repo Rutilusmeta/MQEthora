@@ -1,6 +1,6 @@
 {
   "name": "mqsuper-web-app",
-  "version": "0.1.1",
+  "version": "0.2.1",
   "private": true,
   "dependencies": {
     "@chatscope/chat-ui-kit-react": "^1.9.7",
@@ -57,7 +57,7 @@
     "analyze": "source-map-explorer 'build/static/js/*.js'",
     "build-prod": "BUILD_PATH='./build-prod' react-scripts build",
     "start": "vite",
-    "dev": "vite --host 0.0.0.0",
+    "dev": "vite --host",
     "build": "vite build",
     "serve": "vite preview",
     "lint": "eslint .",
