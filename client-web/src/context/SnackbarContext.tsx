@@ -1,6 +1,6 @@
-import React, { createContext, useState, useEffect, useContext } from "react"
+import React, { createContext, useState, useContext } from "react"
 
-// create context
+//-- create context
 const snackbarState: { open: boolean; action: TAction; message: string } = {
   open: false,
   action: "success",
@@ -17,13 +17,14 @@ interface IContext {
 const SnackbarContext = createContext<IContext>({ snackbar: snackbarState })
 
 export const SnackbarContextProvider = ({ children }) => {
-  // the value that will be given to the context
+  //-- the value that will be given to the context
   const [snackbar, setSnackbar] = useState(snackbarState)
 
   const handleClose = (
     event: React.SyntheticEvent | Event,
     reason?: string
   ) => {
+    console.log(event)
     if (reason === "clickaway") {
       return
     }

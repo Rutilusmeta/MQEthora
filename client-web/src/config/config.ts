@@ -1,7 +1,5 @@
 // Master switches
 
-import { TActiveRoomFilter } from "../store"
-
 /*
 START SCREEN switch.
 This specifies which screen is going to be the default one for Users. See options below.

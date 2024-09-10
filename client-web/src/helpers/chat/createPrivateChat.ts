@@ -13,7 +13,7 @@ export const createPrivateChat = async (
   otherUserWalletAddress: string,
   myFirstName: string,
   otherFirstName: string,
-  userJID?: string
+  _userJID?: string
 ) => {
   const combinedWalletAddress = [myWalletAddress, otherUserWalletAddress]
     .sort()
