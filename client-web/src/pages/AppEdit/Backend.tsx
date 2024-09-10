@@ -1,7 +1,9 @@
-import { Box, Button, TextField, Tooltip, Typography } from "@mui/material"
-import { useFormik } from "formik"
+// import { Box, Button, TextField, Tooltip, Typography } from "@mui/material"
+import { Box, Button, Tooltip, Typography } from "@mui/material"
+// import { useFormik } from "formik"
 import React, { useState } from "react"
 import { useParams } from "react-router"
+
 import { useStoreState } from "../../store"
 import { rotateAppJwt } from "../../http"
 import { useSnackbar } from "../../context/SnackbarContext"
@@ -18,24 +20,25 @@ export const Backend: React.FC<IBackend> = ({}) => {
   const updateApp = useStoreState((state) => state.updateApp)
   const { showSnackbar } = useSnackbar()
   const [loading, setLoading] = useState(false)
-  const formik = useFormik({
-    initialValues: {
-      dpApi: "",
-      webAppUrl: "",
-      shortLinkUrl: "",
-      blockchainRpc: "",
-      chatServerUrl: "",
-      chatServerAdminLogin: "",
-      chatServerAdminPassword: "",
-      ipfs: "",
-    },
-    validate: (values) => {
-      const errors: Record<string, string> = {}
 
-      return errors
-    },
-    onSubmit: ({}) => {},
-  })
+  // const formik = useFormik({
+  //   initialValues: {
+  //     dpApi: "",
+  //     webAppUrl: "",
+  //     shortLinkUrl: "",
+  //     blockchainRpc: "",
+  //     chatServerUrl: "",
+  //     chatServerAdminLogin: "",
+  //     chatServerAdminPassword: "",
+  //     ipfs: "",
+  //   },
+  //   validate: (_values) => {
+  //     const errors: Record<string, string> = {}
+  //     return errors
+  //   },
+  //   onSubmit: ({}) => {},
+  // })
+
   const downloadJWT = () => {
     const url = `data:text/json;chatset=utf-8,${encodeURIComponent(
       JSON.stringify({ appJwt: app.appToken })

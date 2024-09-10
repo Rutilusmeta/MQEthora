@@ -1,13 +1,14 @@
 import React, { useRef, useState } from "react"
 import { Box, Button, TextField, Tooltip, Typography } from "@mui/material"
-import * as http from "../../http"
 import { useParams } from "react-router"
-import { useStoreState } from "../../store"
 import { useFormik } from "formik"
-import { useSnackbar } from "../../context/SnackbarContext"
 import { LoadingButton } from "@mui/lab"
 import InfoIcon from "@mui/icons-material/Info"
-import { getFirebaseConfigFromString } from "../../utils"
+
+import * as http from "../../http"
+import { useStoreState } from "../../store"
+import { useSnackbar } from "../../context/SnackbarContext"
+// import { getFirebaseConfigFromString } from "../../utils"
 
 export interface IServices {}
 type IFile = {
@@ -25,7 +26,7 @@ const firebaseConfigExample = `{
   measurementId: "G-WHMasd7asdxcvX4asdC8"
 }`
 export const Services: React.FC<IServices> = ({}) => {
-  const [loading, setLoading] = useState(false)
+  const [_loading, setLoading] = useState(false)
   const [certificate, setCertificate] = useState({
     _id: "",
     createdAt: "",
@@ -89,7 +90,7 @@ export const Services: React.FC<IServices> = ({}) => {
     initialValues: {
       firebaseWebConfigString: app.firebaseWebConfigString || "",
     },
-    validate: (values) => {
+    validate: (_values) => {
       const errors: Record<string, string> = {}
 
       return errors
@@ -115,13 +116,13 @@ export const Services: React.FC<IServices> = ({}) => {
     },
   })
 
-  const handleFirebaseConfigChange = (
-    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
-  ) => {
-    const value = e.target.value
-    const config = getFirebaseConfigFromString(value)
-    console.log(config)
-  }
+  // const handleFirebaseConfigChange = (
+  //   e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+  // ) => {
+  //   const value = e.target.value
+  //   const config = getFirebaseConfigFromString(value)
+  //   console.log(config)
+  // }
 
   return (
     <Box>

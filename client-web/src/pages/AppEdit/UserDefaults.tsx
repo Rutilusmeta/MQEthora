@@ -2,26 +2,25 @@ import { LoadingButton } from "@mui/lab"
 import {
   Box,
   Checkbox,
-  DialogTitle,
   FormControlLabel,
-  IconButton,
   TextField,
   Typography,
 } from "@mui/material"
 import { useFormik } from "formik"
 import React, { useState } from "react"
+import { useParams } from "react-router"
+
 import { useSnackbar } from "../../context/SnackbarContext"
 import { useStoreState } from "../../store"
 import * as http from "../../http"
-import { useParams } from "react-router"
 import xmpp from "../../xmpp"
 import { CONFERENCEDOMAIN } from "../../constants"
+
 export interface IUserDefaults {}
 
 const JID_LENGTH = 64 + CONFERENCEDOMAIN.length
 
 export const UserDefaults: React.FC<IUserDefaults> = ({}) => {
-  const fileReference = React.useRef<HTMLInputElement>(null)
   const { appId } = useParams<{ appId: string }>()
   const app = useStoreState((s) => s.apps.find((app) => app._id === appId))
   const updateApp = useStoreState((state) => state.updateApp)
@@ -30,7 +29,7 @@ export const UserDefaults: React.FC<IUserDefaults> = ({}) => {
   const defaultChats = useStoreState((state) => state.defaultChatRooms)
 
   const [defaultChatRooms, setDefaultChatRooms] = useState(() =>
-    defaultChats.map((item, index) => ({
+    defaultChats.map((item, _index) => ({
       ...item,
       jid: item.jid,
       checked: item.pinned,
@@ -106,7 +105,7 @@ export const UserDefaults: React.FC<IUserDefaults> = ({}) => {
     rooms[index][property] = value
     if (property === "jid" && value.length === JID_LENGTH) {
       const isRoomExistsStanza = await xmpp.getAndReceiveRoomInfo(value)
-      //error appears because room is not exist and we can create it
+      //-- error appears because room is not exist and we can create it
       if (isRoomExistsStanza.children[1]?.["name"] !== "error") {
         rooms[index].error = true
       }

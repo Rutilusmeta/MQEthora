@@ -1,8 +1,9 @@
 import React, { useState } from "react"
 import { useParams } from "react-router"
-import { useStoreState } from "../../store"
 import Box from "@mui/material/Box"
 import { Container, Tab, Tabs, Typography } from "@mui/material"
+
+// import { useStoreState } from "../../store"
 import { Appearance } from "./Appearance"
 import { UserDefaults } from "./UserDefaults"
 import { Services } from "./Services"
@@ -43,9 +44,10 @@ function TabPanel(properties: TabPanelProperties) {
 export const AppEdit = () => {
   const [activeStep, setActiveStep] = useState(0)
   const { appId } = useParams<{ appId: string }>()
-  const app = useStoreState((s) => s.apps.find((app) => app._id === appId))
+  console.log(appId)
+  // const app = useStoreState((s) => s.apps.find((app) => app._id === appId))
 
-  const handleChange = (event: React.SyntheticEvent, newValue: number) => {
+  const handleChange = (_event: React.SyntheticEvent, newValue: number) => {
     setActiveStep(newValue)
   }
 

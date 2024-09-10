@@ -1,5 +1,4 @@
 import { useEffect, useRef, useState } from "react"
-import AppMock from "../../components/AppBuilder/AppMock"
 import {
   Box,
   Button,
@@ -9,10 +8,16 @@ import {
   Tooltip,
   Typography,
 } from "@mui/material"
-import { httpWithAuth, updateAppSettings } from "../../http"
 import { useParams } from "react-router"
 import { intervalToDuration } from "date-fns"
 import { LoadingButton } from "@mui/lab"
+import UploadFileIcon from "@mui/icons-material/UploadFile"
+import DownloadIcon from "@mui/icons-material/Download"
+import InfoIcon from "@mui/icons-material/Info"
+import OpenInNewIcon from "@mui/icons-material/OpenInNew"
+
+import AppMock from "../../components/AppBuilder/AppMock"
+import { httpWithAuth, updateAppSettings } from "../../http"
 import { useSnackbar } from "../../context/SnackbarContext"
 import { useStoreState } from "../../store"
 import {
@@ -21,10 +26,7 @@ import {
 } from "../../utils"
 import { config } from "../../config"
 import useDebounce from "../../hooks/useDebounce"
-import UploadFileIcon from "@mui/icons-material/UploadFile"
-import DownloadIcon from "@mui/icons-material/Download"
-import InfoIcon from "@mui/icons-material/Info"
-import OpenInNewIcon from "@mui/icons-material/OpenInNew"
+
 export interface TCustomDetails {
   primaryColor: string
   secondaryColor: string
@@ -32,7 +34,6 @@ export interface TCustomDetails {
   coinName: string
   currentScreenIndex: number
   changeScreen: (index: number) => void
-
   logo: string
   loginScreenBackground: string
   coinLogo: string
@@ -60,14 +61,19 @@ export default function AppBuilder() {
     file: undefined,
     value: app?.loginScreenBackgroundImage || app.loginBackgroundColor || "",
   })
-  const [coinLogo, setCoinLogo] = useState<IFile>({
+  // const [coinLogo, setCoinLogo] = useState<IFile>({
+  //   file: undefined,
+  //   url: app?.coinImage || "",
+  // })
+  const [coinLogo] = useState<IFile>({
     file: undefined,
     url: app?.coinImage || "",
   })
 
   const [primaryColor, setPrimaryColor] = useState(app.primaryColor)
   const [secondaryColor, setSecondaryColor] = useState(app.secondaryColor)
-  const [coinSymbol, setCoinSymbol] = useState("")
+  // const [coinSymbol, setCoinSymbol] = useState("")
+  const [coinSymbol] = useState("")
   const [coinName, setCoinName] = useState("Coin")
 
   const [domain, setDomain] = useState(`${app.domainName}`)
@@ -84,14 +90,11 @@ export default function AppBuilder() {
   const loginScreenBgReference = useRef<HTMLInputElement>(null)
   const appLogoReference = useRef<HTMLInputElement>(null)
 
-  useEffect(
-    () => {
-      if (debouncedDomain && debouncedDomain !== app.domainName) {
-        validateDomainName(debouncedDomain)
-      }
-    },
-    [debouncedDomain] // Only call effect if debounced search term changes
-  )
+  useEffect(() => {
+    if (debouncedDomain && debouncedDomain !== app.domainName) {
+      validateDomainName(debouncedDomain)
+    }
+  }, [debouncedDomain])
 
   const checkBuild = async () => {
     setLoading(true)
@@ -168,16 +171,17 @@ export default function AppBuilder() {
     setLogo({ file: l, url: URL.createObjectURL(l) })
   }
 
-  const handleCoinLogoChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    const l = event.target.files[0]
-    setCoinLogo({ file: l, url: URL.createObjectURL(l) })
-  }
+  // const handleCoinLogoChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+  //   const l = event.target.files[0]
+  //   setCoinLogo({ file: l, url: URL.createObjectURL(l) })
+  // }
 
   const validateDomainName = async (domainName: string) => {
     try {
       const res = await httpWithAuth().post("apps/check-domain-name", {
         domainName,
       })
+      console.log(res)
       setDomainNameError(false)
     } catch (error) {
       console.log(error)
@@ -267,6 +271,7 @@ export default function AppBuilder() {
         "/mobile/src-builder/" + appId,
         data
       )
+      console.log(res)
       await checkBuild()
       setBuildStage("download")
     } catch (error) {
