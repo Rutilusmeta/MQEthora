@@ -1,13 +1,14 @@
 version: "3.7"
 services:
   frontend:
-    image: dappros/web
+    # image: dappros/web
     build: ./frontend
     restart: always
     ports:
-      - "8080:80"
+      - "8080:8080"
     volumes:
       - ./frontend/init.sh:/init.sh
+      - shared-data:/app/public
     environment:
       - API_URL=https://xxx.domain.con/v1
       - APP_DOMAIN=domain.com
@@ -17,6 +18,10 @@ services:
     build: ./backend
     restart: always
     ports:
-      - "3000:3000"
+      - "80:3000"
+    volumes:
+    - shared-data:/app/public
     environment:
       - NODE_ENV=development
+volumes:
+  shared-data:

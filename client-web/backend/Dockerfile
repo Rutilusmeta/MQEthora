@@ -8,7 +8,7 @@ RUN yarn install && yarn cache clean
 
 COPY ./ ./
 
-RUN run build
+# RUN run build
 
 EXPOSE 3000
 
