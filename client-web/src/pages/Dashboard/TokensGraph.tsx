@@ -1,5 +1,4 @@
 import { useTheme } from "@mui/material"
-import React from "react"
 import {
   LineChart,
   Line,
@@ -7,7 +6,7 @@ import {
   YAxis,
   CartesianGrid,
   Tooltip,
-  Legend,
+  // Legend,
   ResponsiveContainer,
 } from "recharts"
 

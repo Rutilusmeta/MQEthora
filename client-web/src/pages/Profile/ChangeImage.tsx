@@ -6,9 +6,10 @@ import IconButton from "@mui/material/IconButton"
 import CloseIcon from "@mui/icons-material/Close"
 import { Button } from "@mui/material"
 import ReactCrop, { centerCrop, makeAspectCrop, Crop } from "react-image-crop"
+import "react-image-crop/dist/ReactCrop.css"
+
 import * as http from "../../http"
 import { useStoreState } from "../../store"
-import "react-image-crop/dist/ReactCrop.css"
 
 type TProperties = {
   open: boolean

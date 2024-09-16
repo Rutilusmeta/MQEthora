@@ -1,18 +1,18 @@
 import {
   Box,
   Button,
-  Container,
   FormControl,
   InputLabel,
   MenuItem,
   Select,
-  SelectChangeEvent,
   TextField,
   Typography,
 } from "@mui/material"
 import * as React from "react"
+
 import { createSharedLink } from "../../http"
-import { TUser, useStoreState } from "../../store"
+// import { TUser, useStoreState } from "../../store"
+import { useStoreState } from "../../store"
 import { ISharedLink } from "./ProfileShareTab"
 import { QRSection } from "./QRSection"
 
@@ -85,10 +85,10 @@ function OptionsItem(properties: optionsItemProperties) {
   )
 }
 
-interface QRSectionProperties {
-  user: TUser
-  createdLink: ISharedLink
-}
+// interface QRSectionProperties {
+//   user: TUser
+//   createdLink: ISharedLink
+// }
 
 export const AddTabPanel = (properties: AddTabPanelProperties) => {
   const { getSharedLinks } = properties

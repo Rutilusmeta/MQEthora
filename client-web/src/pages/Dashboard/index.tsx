@@ -1,19 +1,17 @@
-import React, { useEffect, useState } from "react"
+import { useEffect, useState } from "react"
 import Container from "@mui/material/Container"
+import { Box } from "@mui/material"
+
 import UsersGraph from "./UsersGraph"
 import AppsSelect from "./AppsSelect"
 import { useStoreState } from "../../store"
 import TokensGraph from "./TokensGraph"
 import TransactionsGraph from "./TransactionsGraph"
 import Contracts from "./Contracts"
-
-import "./Graph.scss"
 import NetworkHealth from "./NetworkHealth"
 import Peers from "./Peers"
 import * as http from "../../http"
-import { Box } from "@mui/material"
-
-type Properties = {}
+import "./Graph.scss"
 
 export interface IBlockChain {
   blockTimestamp: Date | string

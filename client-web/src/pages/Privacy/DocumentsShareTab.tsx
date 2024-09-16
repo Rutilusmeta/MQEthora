@@ -1,9 +1,10 @@
+import * as React from "react"
 import { Tab, Tabs } from "@mui/material"
 import { Box } from "@mui/system"
-import * as React from "react"
+
 import { useSnackbar } from "../../context/SnackbarContext"
 import { deleteSharedLink, getSharedLinksService } from "../../http"
-import { useStoreState } from "../../store"
+// import { useStoreState } from "../../store"
 import { QrModal } from "../Profile/QrModal"
 import { AddDocumentTabPanel } from "./AddDocumentTabPanel"
 import { ManageDocumentShareTabPanel } from "./ManageDocumentShareTabPanel"
@@ -18,20 +19,20 @@ function a11yProperties(index: number) {
   }
 }
 
-export const DocumentsShare = (properties: DocumentsShareProperties) => {
+export const DocumentsShare = (_properties: DocumentsShareProperties) => {
   const [tab, setTab] = React.useState(0)
   const [openModal, setOpenModal] = React.useState(false)
   const [loading, setLoading] = React.useState(false)
   const [sharedLinks, setSharedLinks] = React.useState<ISharedLink[]>([])
   const [documentLink, setDocumentLink] = React.useState("")
-  const user = useStoreState((state) => state.user)
+  // const user = useStoreState((state) => state.user)
   const { showSnackbar } = useSnackbar()
   const handleCloseModal = () => setOpenModal(false)
   const handleOpenModal = (link: string) => {
     setDocumentLink(link)
     setOpenModal(true)
   }
-  const handleChangeTab = (event: React.SyntheticEvent, newValue: number) => {
+  const handleChangeTab = (_event: React.SyntheticEvent, newValue: number) => {
     setTab(newValue)
   }
 
@@ -49,6 +50,7 @@ export const DocumentsShare = (properties: DocumentsShareProperties) => {
   const deleteLink = async (linkToken: string) => {
     try {
       const { data } = await deleteSharedLink(linkToken)
+      console.log(data)
       await getSharedLinks()
       showSnackbar("success", "Link deleted successfully")
     } catch (error) {

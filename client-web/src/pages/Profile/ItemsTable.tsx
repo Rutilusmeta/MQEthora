@@ -1,6 +1,3 @@
-import React from "react"
-
-import { TBalance } from "../../store"
 import {
   Avatar,
   Chip,
@@ -12,9 +9,11 @@ import {
   useTheme,
   Box,
 } from "@mui/material"
+import { useHistory } from "react-router"
+
+import { TBalance } from "../../store"
 import { produceNfmtItems } from "../../utils"
 import { NFMT_TRAITS } from "../../constants"
-import { useHistory } from "react-router"
 
 const NftItem = ({
   item,
@@ -130,7 +129,7 @@ export default function ItemsTable({
 
   return (
     <List sx={{ width: "100%", bgcolor: "background.paper" }}>
-      {nftItems.map((item, index) => {
+      {nftItems.map((item, _index) => {
         return (
           <NftItem walletAddress={walletAddress} item={item} key={item.nftId} />
         )

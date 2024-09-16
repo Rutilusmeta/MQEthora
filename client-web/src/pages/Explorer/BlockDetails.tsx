@@ -1,12 +1,11 @@
-import React, { useEffect, useState } from "react"
+import { useEffect, useState } from "react"
 import { useParams } from "react-router"
-import { getExplorerBlocks } from "../../http"
-import { IBlock } from "../Profile/types"
 import { format } from "date-fns"
-import { FullPageSpinner } from "../../components/FullPageSpinner"
 import { Box, Typography } from "@mui/material"
 
-interface IBlockDetailsProperties {}
+import { getExplorerBlocks } from "../../http"
+import { IBlock } from "../Profile/types"
+import { FullPageSpinner } from "../../components/FullPageSpinner"
 
 const keysMap: Record<string, string> = {
   difficulty: "Difficulty",
@@ -31,7 +30,7 @@ const keysMap: Record<string, string> = {
   uncles: "Uncles",
 }
 
-export default function BlockDetails(properties) {
+export default function BlockDetails(_properties) {
   const [blockDetails, setBlockDetails] = useState<IBlock | {}>({})
   const [loading, setLoading] = useState(false)
   const parameters = useParams<{ blockNumber: string }>()

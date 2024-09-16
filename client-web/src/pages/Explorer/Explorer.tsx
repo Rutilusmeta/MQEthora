@@ -1,4 +1,6 @@
-import React, { useEffect, useState } from "react"
+import { useEffect, useState } from "react"
+import { Box, styled, Typography } from "@mui/material"
+
 import {
   getExplorerBlocks,
   getExplorerHistory,
@@ -6,16 +8,8 @@ import {
 } from "../../http"
 import { useStoreState } from "../../store"
 import { ExplorerChart } from "../../components/ExplorerChart"
-import { format } from "date-fns"
-import {
-  ExplorerRespose,
-  IBlock,
-  ILineChartData,
-  ITransaction,
-} from "../Profile/types"
+import { ExplorerRespose, IBlock, ITransaction } from "../Profile/types"
 import { FullPageSpinner } from "../../components/FullPageSpinner"
-import { ExplorerBlocks } from "../../components/ExplorerBlocks"
-import { Box, styled, Typography } from "@mui/material"
 import { Transactions } from "../Transactions/Transactions"
 import { TChartData, transformDataForLineChart } from "../../utils"
 
@@ -40,7 +34,7 @@ export default function Explorer() {
   })
   const [explorerHistory, setExplorerHistory] = useState<TChartData | []>([])
   const [loading, setLoading] = useState(false)
-  const [explorerBlocks, setExplorerBlocks] = useState<
+  const [_explorerBlocks, setExplorerBlocks] = useState<
     ExplorerRespose<IBlock[]>
   >({ limit: 0, offset: 0, items: [], total: 0 })
 

@@ -7,13 +7,14 @@ import {
   Typography,
 } from "@mui/material"
 import { useHistory } from "react-router"
-import { TActiveRoomFilter, useStoreState } from "../../store"
-import xmpp from "../../xmpp"
 import StarPurple500Icon from "@mui/icons-material/StarPurple500"
 import StarRateIcon from "@mui/icons-material/StarRate"
-import { ROOMS_FILTERS } from "../../config/config"
 import DeleteIcon from "@mui/icons-material/Delete"
 import InsertPhotoIcon from "@mui/icons-material/InsertPhoto"
+
+import { TActiveRoomFilter, useStoreState } from "../../store"
+import xmpp from "../../xmpp"
+import { ROOMS_FILTERS } from "../../config/config"
 import { useSnackbar } from "../../context/SnackbarContext"
 import { uploadFile } from "../../http"
 

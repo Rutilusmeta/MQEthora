@@ -16,6 +16,10 @@ import Paper from "@mui/material/Paper"
 import Box from "@mui/material/Box"
 import { IconButton, TablePagination, Tooltip, Typography } from "@mui/material"
 import AddCircleIcon from "@mui/icons-material/AddCircle"
+import { useHistory } from "react-router"
+import SettingsIcon from "@mui/icons-material/Settings"
+import LeaderboardIcon from "@mui/icons-material/Leaderboard"
+
 import { useStoreState } from "../../store"
 import NoDataImage from "../../components/NoDataImage"
 import EditAppModal from "./EditAppModal"
@@ -24,10 +28,7 @@ import { RegisterCompanyModal } from "../../components/RegisterCompanyModal"
 import { coinsMainName } from "../../config/config"
 import { getApps } from "../../http"
 import { useSnackbar } from "../../context/SnackbarContext"
-import { useHistory } from "react-router"
-import SettingsIcon from "@mui/icons-material/Settings"
 import { AppsTableHead, CellId } from "../../components/AppsTable/AppsTableHead"
-import LeaderboardIcon from "@mui/icons-material/Leaderboard"
 import { Loader } from "../../components/AppsTable/Loader"
 
 const NewAppModal = lazy(() => import("./NewAppModal"))
@@ -73,7 +74,8 @@ function Apps({
     offset: number
   }>()
 
-  const [itemsPerPage, setItemsPerPage] = useState(10)
+  // const [itemsPerPage, setItemsPerPage] = useState(10)
+  const [itemsPerPage] = useState(10)
 
   const [showDelete, setShowDelete] = useState(false)
   const [showEdit, setShowEdit] = useState(false)
@@ -92,70 +94,70 @@ function Apps({
   const [order, setOrder] = useState<"asc" | "desc">("asc")
   const [orderBy, setOrderBy] = useState<CellId>("displayName")
 
-  const handleRequestSort_ = (property: CellId) => {
-    const isAsc = orderBy === property && order === "asc"
-    setOrder(isAsc ? "desc" : "asc")
-    setOrderBy(property)
+  // const handleRequestSort_ = (property: CellId) => {
+  //   const isAsc = orderBy === property && order === "asc"
+  //   setOrder(isAsc ? "desc" : "asc")
+  //   setOrderBy(property)
 
-    const comparator = (a, b) => {
-      let valueA, valueB, statsSumA, statsSumB
-      switch (property) {
-        case "users":
-          statsSumA = a.stats.totalRegistered
-          statsSumB = b.stats.totalRegistered
-          valueA = isNaN(+statsSumA) ? statsSumA : +statsSumA
-          valueB = isNaN(+statsSumB) ? statsSumB : +statsSumB
-          break
-        case "sessions":
-          statsSumA = a.stats.totalSessions
-          statsSumB = b.stats.totalSessions
-          valueA = isNaN(+statsSumA) ? statsSumA : +statsSumA
-          valueB = isNaN(+statsSumB) ? statsSumB : +statsSumB
-          break
-        case "api":
-          statsSumA = a.stats.totalApiCalls
-          statsSumB = b.stats.totalApiCalls
-          valueA = isNaN(+statsSumA) ? statsSumA : +statsSumA
-          valueB = isNaN(+statsSumB) ? statsSumB : +statsSumB
-          break
-        case "files":
-          statsSumA = a.stats.totalFiles
-          statsSumB = b.stats.totalFiles
-          valueA = isNaN(+statsSumA) ? statsSumA : +statsSumA
-          valueB = isNaN(+statsSumB) ? statsSumB : +statsSumB
-          break
-        case "web3":
-          statsSumA = a.stats.totalTransactions
-          statsSumB = b.stats.totalTransactions
-          valueA = isNaN(+statsSumA) ? statsSumA : +statsSumA
-          valueB = isNaN(+statsSumB) ? statsSumB : +statsSumB
-          break
-        default:
-          valueA = isNaN(+a[property]) ? a[property] : +a[property]
-          valueB = isNaN(+b[property]) ? b[property] : +b[property]
-          break
-      }
+  //   const comparator = (a, b) => {
+  //     let valueA, valueB, statsSumA, statsSumB
+  //     switch (property) {
+  //       case "users":
+  //         statsSumA = a.stats.totalRegistered
+  //         statsSumB = b.stats.totalRegistered
+  //         valueA = isNaN(+statsSumA) ? statsSumA : +statsSumA
+  //         valueB = isNaN(+statsSumB) ? statsSumB : +statsSumB
+  //         break
+  //       case "sessions":
+  //         statsSumA = a.stats.totalSessions
+  //         statsSumB = b.stats.totalSessions
+  //         valueA = isNaN(+statsSumA) ? statsSumA : +statsSumA
+  //         valueB = isNaN(+statsSumB) ? statsSumB : +statsSumB
+  //         break
+  //       case "api":
+  //         statsSumA = a.stats.totalApiCalls
+  //         statsSumB = b.stats.totalApiCalls
+  //         valueA = isNaN(+statsSumA) ? statsSumA : +statsSumA
+  //         valueB = isNaN(+statsSumB) ? statsSumB : +statsSumB
+  //         break
+  //       case "files":
+  //         statsSumA = a.stats.totalFiles
+  //         statsSumB = b.stats.totalFiles
+  //         valueA = isNaN(+statsSumA) ? statsSumA : +statsSumA
+  //         valueB = isNaN(+statsSumB) ? statsSumB : +statsSumB
+  //         break
+  //       case "web3":
+  //         statsSumA = a.stats.totalTransactions
+  //         statsSumB = b.stats.totalTransactions
+  //         valueA = isNaN(+statsSumA) ? statsSumA : +statsSumA
+  //         valueB = isNaN(+statsSumB) ? statsSumB : +statsSumB
+  //         break
+  //       default:
+  //         valueA = isNaN(+a[property]) ? a[property] : +a[property]
+  //         valueB = isNaN(+b[property]) ? b[property] : +b[property]
+  //         break
+  //     }
 
-      if (valueA < valueB) {
-        return isAsc ? -1 : 1
-      }
-      if (valueA > valueB) {
-        return isAsc ? 1 : -1
-      }
-      return 0
-    }
+  //     if (valueA < valueB) {
+  //       return isAsc ? -1 : 1
+  //     }
+  //     if (valueA > valueB) {
+  //       return isAsc ? 1 : -1
+  //     }
+  //     return 0
+  //   }
 
-    const sortedApps = [...currentPageApps].sort(comparator)
-    setCurrentPageApps(sortedApps)
-  }
+  //   const sortedApps = [...currentPageApps].sort(comparator)
+  //   setCurrentPageApps(sortedApps)
+  // }
 
   const toggleOrder = () => {
-    if (order === 'asc') {
-      setOrder('desc')
-      return 'desc'
+    if (order === "asc") {
+      setOrder("desc")
+      return "desc"
     } else {
-      setOrder('asc')
-      return 'asc'
+      setOrder("asc")
+      return "asc"
     }
   }
 
@@ -163,10 +165,10 @@ function Apps({
     if (property === "chats") {
       return
     }
-    
+
     const order = toggleOrder()
     setOrderBy(property)
-    console.log({property, page, order, orderBy})
+    console.log({ property, page, order, orderBy })
     await getUserApps(itemsPerPage * page, order, property)
   }
 
@@ -182,7 +184,11 @@ function Apps({
     }
   }, [currentPageApps])
 
-  const getUserApps = async (offset: number, order: 'asc' | 'desc', orderBy: string) => {
+  const getUserApps = async (
+    offset: number,
+    order: "asc" | "desc",
+    orderBy: string
+  ) => {
     setIsLoading(true)
     try {
       const apps = await getApps(offset, orderBy, order)
@@ -202,14 +208,14 @@ function Apps({
     }
   }
 
-  const onDelete = (app: any) => {
-    setCurrentApp(app)
-    setShowDelete(true)
-  }
+  // const onDelete = (app: any) => {
+  //   setCurrentApp(app)
+  //   setShowDelete(true)
+  // }
 
   const onPagination = useCallback(
-    async (event: ChangeEvent<unknown>, tablePage: number) => {
-      console.log({tablePage})
+    async (_event: ChangeEvent<unknown>, tablePage: number) => {
+      console.log({ tablePage })
       setPage(tablePage)
       await getUserApps(itemsPerPage * tablePage, order, orderBy)
     },

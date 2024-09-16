@@ -1,9 +1,10 @@
-import Apps from "./Apps"
 import Box from "@mui/material/Box"
 import { Container } from "@mui/material"
+import { useState } from "react"
+
+import Apps from "./Apps"
 import UsersTable from "../../components/UsersTable/UsersTable"
 import { OwnerAlert } from "../../components/OwnerAlert"
-import { useState } from "react"
 
 export default function Owner() {
   const [showInfoAlert, setShowInfoAlert] = useState(true)

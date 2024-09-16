@@ -1,26 +1,21 @@
-import React, { useState, useEffect } from "react"
+import { useState, useEffect } from "react"
 import Container from "@mui/material/Container"
 import Box from "@mui/material/Box"
+import { Helmet } from "react-helmet"
+import { useHistory, useLocation } from "react-router"
+import { Button, Typography } from "@mui/material"
+
 import { ExplorerRespose, ITransaction, TProfile } from "./types"
 import UserCard from "./UserCard"
-import {
-  getPublicProfile,
-  getTransactions,
-  getBalance,
-  IDocument,
-} from "../../http"
+import { getPublicProfile, getTransactions, IDocument } from "../../http"
 import { Transactions } from "../Transactions/Transactions"
 import { FullPageSpinner } from "../../components/FullPageSpinner"
 import ItemsTable from "./ItemsTable"
 import { filterNftBalances } from "../../utils"
 import { TBalance } from "../../store"
-import { Button, Typography } from "@mui/material"
 import DocumentsTable from "./DocumentsTable"
-import * as http from "../../http"
-import { Helmet } from "react-helmet"
 import { appName } from "../../config/config"
 import defUserImage from "../../assets/images/def-ava.png"
-import { useHistory, useLocation } from "react-router"
 
 type TProperties = {
   walletAddress: string
@@ -43,8 +38,8 @@ export function OtherProfile({ walletAddress }: TProperties) {
       try {
         // const { data: file } = await http
         //   .httpWithAuth()
-        //   .get<http.IFile>("/files/" + item.files[0]);
-        // item.file = file;
+        //   .get<http.IFile>("/files/" + item.files[0])
+        // item.file = file
         item.location = item.locations[0]
         mappedDocuments.push(item)
       } catch {

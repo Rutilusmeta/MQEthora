@@ -6,12 +6,11 @@ import Tab from "@mui/material/Tab"
 import TabContext from "@mui/lab/TabContext"
 import TabList from "@mui/lab/TabList"
 import TabPanel from "@mui/lab/TabPanel"
-import { useQuery } from "../../utils"
-import { EmailSingInForm } from "./EmailSignInForm"
-import { EmailSignUpForm } from "./EmailSignUpForm"
 import IconButton from "@mui/material/IconButton"
 import CloseIcon from "@mui/icons-material/Close"
-import { useLocation } from "react-router"
+
+import { EmailSingInForm } from "./EmailSignInForm"
+import { EmailSignUpForm } from "./EmailSignUpForm"
 import { TLoginSuccessResponse } from "../../http"
 
 type TProperties = {
@@ -22,14 +21,14 @@ type TProperties = {
 
 export function EmailModal({ open, setOpen, updateUser }: TProperties) {
   const [tab, setTab] = useState("1")
-  const [message, setMessage] = useState("")
-  const query = useQuery()
+  // const [message, setMessage] = useState("")
+  const [message] = useState("")
 
-  const onClose = (e: any, reason: any) => {
+  const onClose = (_e: any, _reason: any) => {
     setOpen(false)
   }
 
-  const handleChange = (event: React.SyntheticEvent, newValue: string) => {
+  const handleChange = (_event: React.SyntheticEvent, newValue: string) => {
     setTab(newValue)
   }
 

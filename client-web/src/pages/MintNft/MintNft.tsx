@@ -8,9 +8,10 @@ import {
   TextField,
 } from "@mui/material"
 import React from "react"
+import { useFormik } from "formik"
+
 import { useStoreState } from "../../store"
 import * as http from "../../http"
-import { useFormik } from "formik"
 import { useSnackbar } from "../../context/SnackbarContext"
 
 export interface IMintNft {}
@@ -83,6 +84,7 @@ export const MintNft: React.FC<IMintNft> = ({}) => {
           )
         })
         .catch((error) => {
+          console.log(error)
           showSnackbar("error", "Minting failed")
         })
         .finally(() => setLoading(false))

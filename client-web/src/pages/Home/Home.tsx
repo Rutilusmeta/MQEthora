@@ -1,12 +1,11 @@
 import React from "react"
-import { Redirect, useLocation } from "react-router-dom"
+import { Redirect } from "react-router-dom"
+
 import { useStoreState } from "../../store"
 
 export interface IHome {}
 
 export const Home: React.FC<IHome> = ({}) => {
-  const { search } = useLocation()
-
   const user = useStoreState((state) => state.user)
 
   switch (user.homeScreen) {

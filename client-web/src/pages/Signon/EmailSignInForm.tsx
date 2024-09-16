@@ -1,4 +1,4 @@
-import React, { useMemo, useState } from "react"
+import { useMemo, useState } from "react"
 import TextField from "@mui/material/TextField"
 import Button from "@mui/material/Button"
 import Input from "@mui/material/Input"
@@ -12,8 +12,8 @@ import InputLabel from "@mui/material/InputLabel"
 import FormHelperText from "@mui/material/FormHelperText"
 import { useFormik } from "formik"
 import { useHistory, useLocation } from "react-router"
+
 import { loginEmail, TLoginSuccessResponse } from "../../http"
-import { useStoreState } from "../../store"
 import { useSnackbar } from "../../context/SnackbarContext"
 
 const validate = (values: Record<string, string>) => {
@@ -66,7 +66,7 @@ export function EmailSingInForm(properties: TProperties) {
             })
             return
           }
-          const user = resp.data.user
+          // const user = resp.data.user
           properties.updateUser(resp.data)
           properties.closeModal()
         })

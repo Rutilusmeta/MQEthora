@@ -1,7 +1,7 @@
-import React from "react"
 import CheckCircleOutlinedIcon from "@mui/icons-material/CheckCircleOutlined"
 import HighlightOffOutlinedIcon from "@mui/icons-material/HighlightOffOutlined"
 import { Box } from "@mui/material"
+
 import { IBlockChain } from "."
 
 type Properties = {

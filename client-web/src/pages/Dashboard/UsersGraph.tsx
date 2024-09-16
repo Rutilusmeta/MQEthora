@@ -1,6 +1,4 @@
-import React, { useEffect, useState } from "react"
-
-import * as http from "../../http"
+import { useEffect, useState } from "react"
 import {
   LineChart,
   Line,
@@ -8,10 +6,12 @@ import {
   YAxis,
   CartesianGrid,
   Tooltip,
-  Legend,
+  // Legend,
   ResponsiveContainer,
 } from "recharts"
 import { CircularProgress, useTheme } from "@mui/material"
+
+import * as http from "../../http"
 import { TChartData, transformDataForLineChart } from "../../utils"
 
 type Properties = {

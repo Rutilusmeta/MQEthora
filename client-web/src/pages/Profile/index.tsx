@@ -1,6 +1,6 @@
-import React from "react"
-import { useStoreState } from "../../store"
 import { useParams } from "react-router-dom"
+
+import { useStoreState } from "../../store"
 import { MyProfile } from "./MyProfile"
 import { OtherProfile } from "./OtherProfile"
 

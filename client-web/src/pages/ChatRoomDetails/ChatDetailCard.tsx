@@ -1,9 +1,10 @@
 import { useState } from "react"
 import { Box, Container, IconButton, Typography } from "@mui/material"
 import { useHistory, useParams } from "react-router"
+import EditIcon from "@mui/icons-material/Edit"
+
 import { useStoreState } from "../../store"
 import xmpp from "../../xmpp"
-import EditIcon from "@mui/icons-material/Edit"
 import { DeleteDialog } from "../../components/DeleteDialog"
 import { ChangeRoomInfoModal } from "./ChangeRoomInfoModal"
 import { ChatAvatar } from "./ChatAvatar"

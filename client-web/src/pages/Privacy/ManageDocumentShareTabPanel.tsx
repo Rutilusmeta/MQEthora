@@ -6,12 +6,13 @@ import {
   Typography,
 } from "@mui/material"
 import * as React from "react"
-import { ISharedLink } from "./ProfileShareTab"
 import QrCode2Icon from "@mui/icons-material/QrCode2"
 import DescriptionIcon from "@mui/icons-material/Description"
 import DeleteIcon from "@mui/icons-material/Delete"
-import { generateDocumentLink } from "../../utils"
 import { format } from "date-fns"
+
+import { ISharedLink } from "./ProfileShareTab"
+import { generateDocumentLink } from "../../utils"
 
 interface ManageDocumentShareTabPanelProperties {
   handleChangeTab: (event: React.SyntheticEvent, newValue: number) => void
@@ -71,7 +72,7 @@ export const ManageDocumentShareTabPanel = (
       {loading ? <CircularProgress /> : null}
 
       {sharedLinks.length > 0
-        ? sharedLinks.map((item, index) => {
+        ? sharedLinks.map((item, _index) => {
             return (
               <LinkItemComponent
                 handleOpenModal={handleOpenModal}

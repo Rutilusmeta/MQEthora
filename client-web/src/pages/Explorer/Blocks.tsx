@@ -1,4 +1,5 @@
-import React, { useEffect, useState } from "react"
+import { useEffect, useState } from "react"
+
 import { BlocksTable } from "../../components/BlocksTable"
 import { FullPageSpinner } from "../../components/FullPageSpinner"
 import { getExplorerBlocks } from "../../http"
@@ -6,7 +7,7 @@ import { ExplorerRespose, IBlock } from "../Profile/types"
 
 export interface IBlocksProperties {}
 
-const Blocks = (properties: IBlocksProperties) => {
+const Blocks = (_properties: IBlocksProperties) => {
   const [blocks, setBlocks] = useState<ExplorerRespose<IBlock[]>>({
     total: 0,
     limit: 0,

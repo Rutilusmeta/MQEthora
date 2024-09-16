@@ -1,10 +1,11 @@
 import { Box, IconButton, Typography } from "@mui/material"
-import * as React from "react"
-import { TUserBlackList, useStoreState } from "../../store"
 import AccountCircleIcon from "@mui/icons-material/AccountCircle"
 import RemoveCircleIcon from "@mui/icons-material/RemoveCircle"
-import xmpp from "../../xmpp"
 import { format } from "date-fns"
+
+import { TUserBlackList, useStoreState } from "../../store"
+import xmpp from "../../xmpp"
+
 interface BlockingProperties {}
 
 interface BlackListUserItemProperties {
@@ -12,7 +13,7 @@ interface BlackListUserItemProperties {
   handleRemove: (userId: string) => void
 }
 
-export const Blocking = (properties: BlockingProperties) => {
+export const Blocking = (_properties: BlockingProperties) => {
   const blacklist = useStoreState((store) => store.blackList)
 
   const handleRemoveUserFromBlackList = (userId: string) => {

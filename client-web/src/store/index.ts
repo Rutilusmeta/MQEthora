@@ -1,9 +1,9 @@
 import create from "zustand"
 import { immer } from "zustand/middleware/immer"
 import { persist, devtools } from "zustand/middleware"
-import * as http from "../http"
-import { stat } from "node:fs"
 import type { Stripe } from "stripe"
+
+import * as http from "../http"
 import { IDefaultChatRoom, THomeScreen } from "../http"
 
 // type used for User profile details
@@ -347,7 +347,7 @@ interface IStore {
 const _useStore = create<IStore>()(
   devtools(
     persist(
-      immer((set, get) => {
+      immer((set, _get) => {
         return {
           user: {
             firstName: "",
@@ -636,7 +636,7 @@ const _useStore = create<IStore>()(
           },
           updateCoinsInMessageHistory: (
             id: number,
-            userJID: string,
+            _userJID: string,
             amount: number
           ) =>
             set((state) => {

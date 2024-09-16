@@ -1,9 +1,10 @@
 import React, { useEffect, useState } from "react"
 import { PaymentElement, useStripe, useElements } from "@stripe/react-stripe-js"
-import { Box, Button, Container } from "@mui/material"
+import { Box, Container } from "@mui/material"
+import { LoadingButton } from "@mui/lab"
+
 import { useSnackbar } from "../../context/SnackbarContext"
 import { useHistory } from "react-router"
-import { LoadingButton } from "@mui/lab"
 
 export interface ISubscriptions {
   clientSecret: string
@@ -23,13 +24,16 @@ export const Subscriptions: React.FC<ISubscriptions> = ({ clientSecret }) => {
     stripe.retrievePaymentIntent(clientSecret).then(({ paymentIntent }) => {
       switch (paymentIntent.status) {
         case "succeeded": {
-          // showSnackbar("success", "Success! Payment received.");
+          // showSnackbar("success", "Success! Payment received.")
           history.push("/")
           break
         }
 
         case "processing": {
-          // showSnackbar( 'error',"Payment processing. We'll update you when payment is received.");
+          // showSnackbar(
+          //   "error",
+          //   "Payment processing. We'll update you when payment is received."
+          // )
           break
         }
 
@@ -37,15 +41,15 @@ export const Subscriptions: React.FC<ISubscriptions> = ({ clientSecret }) => {
           // showSnackbar(
           //   "error",
           //   "Payment failed. Please try another payment method."
-          // );
-          // Redirect your user back to your payment page to attempt collecting
-          // payment again
+          // )
+          //-- Redirect your user back to your payment page to attempt collecting
+          //-- payment again
           break
         }
 
         default: {
           console.log(paymentIntent)
-          // showSnackbar("error", "Something went wrong.");
+          // showSnackbar("error", "Something went wrong.")
           break
         }
       }
@@ -56,8 +60,8 @@ export const Subscriptions: React.FC<ISubscriptions> = ({ clientSecret }) => {
     event.preventDefault()
 
     if (!stripe || !elements) {
-      // Stripe.js has not yet loaded.
-      // Make sure to disable form submission until Stripe.js has loaded.
+      //-- Stripe.js has not yet loaded.
+      //-- Make sure to disable form submission until Stripe.js has loaded.
       return
     }
 

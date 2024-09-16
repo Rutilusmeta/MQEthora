@@ -1,12 +1,7 @@
-import * as React from "react"
-
 import { Box } from "@mui/system"
-import * as http from "../../http"
-
 import QrCodeIcon from "@mui/icons-material/QrCode"
 import {
   Avatar,
-  Chip,
   IconButton,
   List,
   ListItem,
@@ -17,6 +12,8 @@ import {
 } from "@mui/material"
 import { format } from "date-fns"
 import { useHistory } from "react-router"
+
+import * as http from "../../http"
 
 const DocumentItem = ({
   item,

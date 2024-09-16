@@ -1,7 +1,8 @@
+import * as React from "react"
 import { Box, Button, Typography } from "@mui/material"
 import { useWeb3React } from "@web3-react/core"
-import * as React from "react"
 import { useHistory } from "react-router"
+
 import { DeleteDialog } from "../../components/DeleteDialog"
 import { useSnackbar } from "../../context/SnackbarContext"
 import { deleteAccountService, httpWithAuth } from "../../http"
@@ -10,7 +11,7 @@ import xmpp from "../../xmpp"
 
 interface ManageDataProperties {}
 
-export const ManageData = (properties: ManageDataProperties) => {
+export const ManageData = (_properties: ManageDataProperties) => {
   const [deleteDialogOpen, setDeleteDialogOpen] = React.useState(false)
   const [loading, setLoading] = React.useState(false)
   const { showSnackbar } = useSnackbar()

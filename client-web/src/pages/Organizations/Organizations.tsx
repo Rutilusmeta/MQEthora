@@ -1,5 +1,4 @@
 import React, { useEffect } from "react"
-
 import {
   Box,
   Container,
@@ -11,12 +10,14 @@ import {
   Typography,
 } from "@mui/material"
 import { FormikErrors, useFormik } from "formik"
-import countries from "../../assets/countries.json"
 import { LoadingButton } from "@mui/lab"
+import { useHistory, useLocation } from "react-router"
+
+import countries from "../../assets/countries.json"
 import { getSubscriptions, getUserCompany, httpWithAuth } from "../../http"
 import { useSnackbar } from "../../context/SnackbarContext"
 import { useStoreState } from "../../store"
-import { useHistory, useLocation } from "react-router"
+
 type Properties = {}
 interface FormValues {
   companyName: string
@@ -117,6 +118,7 @@ const Organizations: React.FC<Properties> = ({}) => {
       setSubmitting(true)
       try {
         const res = await httpWithAuth().post("/company/", body)
+        console.log(res)
         await getCompany()
         if (user.subscriptions.data.length > 0) {
           history.push("/")

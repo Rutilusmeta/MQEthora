@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react"
+import React, { useState } from "react"
 import Dialog from "@mui/material/Dialog"
 import DialogTitle from "@mui/material/DialogTitle"
 import Box from "@mui/material/Box"
@@ -10,13 +10,9 @@ import { NativeSelect } from "@mui/material"
 import { useFormik } from "formik"
 import TextField from "@mui/material/TextField"
 import LoadingButton from "@mui/lab/LoadingButton"
+
 import { httpWithAuth } from "../../http"
-import FormControlLabel from "@mui/material/FormControlLabel"
-import Checkbox from "@mui/material/Checkbox"
-import ChageImage from "./ChangeImage"
-import defUserImage from "../../assets/images/def-ava.png"
 import { TBalance, useStoreState } from "../../store"
-import ItemsTable from "./ItemsTable"
 
 type TProperties = {
   open: boolean
@@ -104,12 +100,12 @@ export default function TransferItemsModal({
                   )
                 })}
                 {/* {apps.map((app) => {
-                    return (
-                      <option key={app._id} value={app._id}>
-                        {app.appName}
-                      </option>
-                    );
-                  })} */}
+                  return (
+                    <option key={app._id} value={app._id}>
+                      {app.appName}
+                    </option>
+                  )
+                })} */}
               </NativeSelect>
             </FormControl>
             <TextField

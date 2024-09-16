@@ -1,7 +1,6 @@
 import {
   Avatar,
   Box,
-  Button,
   IconButton,
   List,
   ListItem,
@@ -9,10 +8,11 @@ import {
   MenuItem,
   Typography,
 } from "@mui/material"
-import React, { useEffect, useState } from "react"
+import React, { useState } from "react"
 import { useHistory, useParams } from "react-router"
-import { TMemberInfo, TUserChatRooms, useStoreState } from "../../store"
 import MoreVertIcon from "@mui/icons-material/MoreVert"
+
+import { TMemberInfo, useStoreState } from "../../store"
 import xmpp from "../../xmpp"
 import {
   walletToUsername,
@@ -28,7 +28,7 @@ export default function MembersList() {
   const user = useStoreState((store) => store.user)
   const currentRoomData = userChatRooms.find((e) => e?.jid === roomJID)
   const [showMenu, setShowMenu] = useState<boolean>(false)
-  const [selectedUser, setSelectedUser] = useState<TMemberInfo>()
+  const [_selectedUser, setSelectedUser] = useState<TMemberInfo>()
   const [anchorElement, setAnchorElement] = useState<null | HTMLElement>(null)
   const roomRoles = useStoreState((state) => state.roomRoles)
   const history = useHistory()

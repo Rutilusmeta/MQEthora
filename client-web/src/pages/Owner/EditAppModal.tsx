@@ -6,11 +6,12 @@ import IconButton from "@mui/material/IconButton"
 import CloseIcon from "@mui/icons-material/Close"
 import { useFormik } from "formik"
 import TextField from "@mui/material/TextField"
-import { useStoreState } from "../../store"
 import LoadingButton from "@mui/lab/LoadingButton"
-import * as http from "../../http"
 import FormControlLabel from "@mui/material/FormControlLabel"
 import Checkbox from "@mui/material/Checkbox"
+
+import { useStoreState } from "../../store"
+import * as http from "../../http"
 
 type TProperties = {
   open: boolean

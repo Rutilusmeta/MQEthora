@@ -1,10 +1,11 @@
-import React, { useState } from "react"
+import React from "react"
 import { Typography, Box, Button, TextField } from "@mui/material"
-import { useStoreState } from "../../store"
 import PersonAddAltIcon from "@mui/icons-material/PersonAddAlt"
 import ShareIcon from "@mui/icons-material/Share"
-import { useSnackbar } from "../../context/SnackbarContext"
 import { useFormik } from "formik"
+
+import { useStoreState } from "../../store"
+import { useSnackbar } from "../../context/SnackbarContext"
 import { getBalance, httpWithAuth } from "../../http"
 
 const coinImg = "/coin.png"
@@ -49,6 +50,7 @@ const Referrals: React.FC<IReferrals> = ({}) => {
         const res = await httpWithAuth().post("/users/referral", {
           referrerId: refLink,
         })
+        console.log(res)
         const balance = await getBalance(walletAddress)
         setBalance(balance.data.balance)
         showSnackbar("success", "Referral successfully added")

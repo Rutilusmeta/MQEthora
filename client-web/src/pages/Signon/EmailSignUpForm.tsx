@@ -2,10 +2,11 @@ import { useState } from "react"
 import TextField from "@mui/material/TextField"
 import Box from "@mui/material/Box"
 import { useFormik } from "formik"
-import { registerByEmail } from "../../http"
-import { useHistory, useLocation } from "react-router-dom"
-import { useSnackbar } from "../../context/SnackbarContext"
+import { useLocation } from "react-router-dom"
 import { LoadingButton } from "@mui/lab"
+
+import { registerByEmail } from "../../http"
+import { useSnackbar } from "../../context/SnackbarContext"
 
 const validate = (values: Record<string, string>) => {
   const errors: Record<string, string> = {}
@@ -31,9 +32,8 @@ type TProperties = {
   closeModal: () => void
 }
 
-export function EmailSignUpForm(properties: TProperties) {
+export function EmailSignUpForm(_properties: TProperties) {
   const [errorMessage, setErrorMessage] = useState("")
-  const history = useHistory()
   const { showSnackbar } = useSnackbar()
   const { search } = useLocation()
   const signUpPlan = new URLSearchParams(search).get("signUpPlan")
@@ -54,6 +54,7 @@ export function EmailSignUpForm(properties: TProperties) {
           values.lastName,
           signUpPlan
         )
+        console.log(resp)
         resetForm()
         showSnackbar(
           "success",

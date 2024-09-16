@@ -74,7 +74,7 @@ export const ManageTabPanel = (properties: ManageTabPanelProperties) => {
       {loading ? <CircularProgress /> : null}
 
       {sharedLinks.length > 0
-        ? sharedLinks.map((item, index) => {
+        ? sharedLinks.map((item, _index) => {
             return (
               <LinkItemComponent
                 handleOpenModal={handleOpenModal}

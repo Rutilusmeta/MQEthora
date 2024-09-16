@@ -7,7 +7,9 @@ import Container from "@mui/material/Container"
 import { useWeb3React } from "@web3-react/core"
 import { useEffect, useState } from "react"
 import FacebookLogin from "react-facebook-login"
-import { useHistory, useLocation, useParams } from "react-router-dom"
+import { useHistory, useLocation } from "react-router-dom"
+import { Alert, AlertTitle, Typography } from "@mui/material"
+
 import { injected } from "../../connector"
 import * as http from "../../http"
 import { useStoreState } from "../../store"
@@ -20,13 +22,11 @@ import {
   facebookSignIn,
   googleSignIn,
   metamaskSignIn,
-  regularLogin,
   regularLoginEmail,
 } from "../../config/config"
 import { signInWithGoogle } from "../../services/firebase"
 import { useSnackbar } from "../../context/SnackbarContext"
 import { ForgotPasswordModal } from "../../components/ForgotPasswordModal"
-import { Alert, AlertTitle, Typography } from "@mui/material"
 import xmpp from "../../xmpp"
 
 export default function Signon() {

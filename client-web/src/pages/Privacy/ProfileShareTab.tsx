@@ -1,5 +1,6 @@
 import { Box, Tab, Tabs } from "@mui/material"
 import * as React from "react"
+
 import { deleteSharedLink, getSharedLinksService } from "../../http"
 import { useStoreState } from "../../store"
 import { generateProfileLink } from "../../utils"
@@ -30,19 +31,18 @@ function a11yProperties(index: number) {
   }
 }
 
-export const ProfileShareTab = (properties: ProfileShareTabProperties) => {
+export const ProfileShareTab = (_properties: ProfileShareTabProperties) => {
   const [tab, setTab] = React.useState(0)
   const [loading, setLoading] = React.useState(false)
   const [sharedLinks, setSharedLinks] = React.useState<ISharedLink[]>([])
   const [openModal, setOpenModal] = React.useState(false)
-  const [showToast, setShowToast] = React.useState(false)
+  const [_showToast, setShowToast] = React.useState(false)
   const user = useStoreState((state) => state.user)
 
   const handleOpenModal = () => setOpenModal(true)
   const handleCloseModal = () => setOpenModal(false)
   const handleOpenToast = () => setShowToast(true)
-  const handleCloseToast = () => setShowToast(false)
-  const handleChangeTab = (event: React.SyntheticEvent, newValue: number) => {
+  const handleChangeTab = (_event: React.SyntheticEvent, newValue: number) => {
     setTab(newValue)
   }
 
@@ -68,6 +68,7 @@ export const ProfileShareTab = (properties: ProfileShareTabProperties) => {
   const deleteLink = async (linkToken: string) => {
     try {
       const { data } = await deleteSharedLink(linkToken)
+      console.log(data)
       await getSharedLinks()
       handleOpenToast()
     } catch (error) {

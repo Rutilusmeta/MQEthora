@@ -1,24 +1,25 @@
 import { useState, useEffect } from "react"
 import Container from "@mui/material/Container"
 import Box from "@mui/material/Box"
+import { Typography } from "@mui/material"
+
 import { ExplorerRespose, ITransaction } from "./types"
 import UserCard from "./UserCard"
 import { getTransactions, getBalance } from "../../http"
 import { useStoreState } from "../../store"
 import ItemsTable from "./ItemsTable"
 import { Transactions } from "../Transactions/Transactions"
-import { Typography } from "@mui/material"
 import DocumentsTable from "./DocumentsTable"
 import { FullPageSpinner } from "../../components/FullPageSpinner"
 import { filterNftBalances } from "../../utils"
 
-const styles = {
-  craeteNewLink: {
-    textDecoration: "none",
-    color: "inherit",
-    fontSize: "14px",
-  },
-}
+// const styles = {
+//   craeteNewLink: {
+//     textDecoration: "none",
+//     color: "inherit",
+//     fontSize: "14px",
+//   },
+// }
 
 export function MyProfile() {
   const [loading, setLoading] = useState(false)

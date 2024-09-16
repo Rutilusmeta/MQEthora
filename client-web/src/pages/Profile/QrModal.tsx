@@ -2,8 +2,9 @@ import React from "react"
 import { Button, Dialog, DialogTitle, IconButton } from "@mui/material"
 import { Box } from "@mui/system"
 import QRCode from "react-qr-code"
-import { truncateString } from "../../utils"
 import CloseIcon from "@mui/icons-material/Close"
+
+import { truncateString } from "../../utils"
 
 export interface IQrModal {
   open: boolean

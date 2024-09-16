@@ -11,10 +11,11 @@ import {
 } from "@mui/material"
 import { useFormik } from "formik"
 import { sha256 } from "js-sha256"
+import { useHistory, useLocation } from "react-router"
+
 import xmpp from "../../xmpp"
 import { useStoreState } from "../../store"
 import { CONFERENCEDOMAIN } from "../../constants"
-import { useHistory, useLocation } from "react-router"
 import { httpWithAuth } from "../../http"
 import { useSnackbar } from "../../context/SnackbarContext"
 
@@ -22,7 +23,7 @@ export interface INewChat {}
 
 const NewChat: React.FC<INewChat> = ({}) => {
   const theme = useTheme()
-  const user = useStoreState((state) => state.user)
+  // const user = useStoreState((state) => state.user)
   const setActiveRoomFilter = useStoreState(
     (state) => state.setActiveRoomFilter
   )
@@ -66,6 +67,7 @@ const NewChat: React.FC<INewChat> = ({}) => {
           },
         }
         const res = await httpWithAuth().post("/room", body)
+        console.log(res)
       }
       setActiveRoomFilter("private")
       setLoading(false)

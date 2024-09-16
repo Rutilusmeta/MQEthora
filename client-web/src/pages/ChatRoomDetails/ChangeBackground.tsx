@@ -1,10 +1,11 @@
 import React, { useState } from "react"
 import { useParams } from "react-router"
 import { Box, Container } from "@mui/material"
+import CheckCircleIcon from "@mui/icons-material/CheckCircle"
+
 import { defaultChatBackgroundThemes } from "../../config/config"
 import { useStoreState } from "../../store"
 import { useSnackbar } from "../../context/SnackbarContext"
-import CheckCircleIcon from "@mui/icons-material/CheckCircle"
 import xmpp from "../../xmpp"
 
 const BackgroundCard = ({

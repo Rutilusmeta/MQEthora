@@ -1,4 +1,4 @@
-import React, { ChangeEvent, useEffect, useState } from "react"
+import { ChangeEvent, useEffect, useState } from "react"
 import Table from "@mui/material/Table"
 import TableBody from "@mui/material/TableBody"
 import TableCell from "@mui/material/TableCell"
@@ -11,13 +11,14 @@ import { IconButton, Modal, Typography } from "@mui/material"
 import AddCircleIcon from "@mui/icons-material/AddCircle"
 import Select, { SelectChangeEvent } from "@mui/material/Select"
 import MenuItem from "@mui/material/MenuItem"
-import { useStoreState } from "../../store"
-import NoDataImage from "../../components/NoDataImage"
-import NewUserModal from "./NewUserModal"
 import FormControl from "@mui/material/FormControl"
 import InputLabel from "@mui/material/InputLabel"
 import Pagination from "@mui/material/Pagination"
 import CloseIcon from "@mui/icons-material/Close"
+
+import { useStoreState } from "../../store"
+import NoDataImage from "../../components/NoDataImage"
+import NewUserModal from "./NewUserModal"
 import * as http from "../../http"
 import { EditAcl } from "../../components/EditAcl"
 
@@ -127,7 +128,7 @@ export default function Users() {
     })
   }
 
-  const onPagination = (event: ChangeEvent<unknown>, page: number) => {
+  const onPagination = (_event: ChangeEvent<unknown>, page: number) => {
     let offset = 0
     if (page - 1 > 0) {
       offset = (page - 1) * (pagination?.limit || 10)

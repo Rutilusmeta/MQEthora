@@ -1,7 +1,8 @@
-import React, { useState, useEffect } from "react"
+import { useState, useEffect } from "react"
 import GavelIcon from "@mui/icons-material/Gavel"
-import * as http from "../../http"
 import { Box } from "@mui/material"
+
+import * as http from "../../http"
 
 type Properties = {
   appToken?: string

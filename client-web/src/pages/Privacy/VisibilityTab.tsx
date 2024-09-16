@@ -1,6 +1,5 @@
 import {
   Button,
-  Container,
   FormControl,
   FormControlLabel,
   FormLabel,
@@ -10,6 +9,7 @@ import {
 } from "@mui/material"
 import { Box } from "@mui/system"
 import React, { useState } from "react"
+
 import { useSnackbar } from "../../context/SnackbarContext"
 import { changeUserData } from "../../http"
 import { useStoreState } from "../../store"
@@ -54,6 +54,7 @@ export const Visibility: React.FC<VisibilityProperties> = ({
       const formData = new FormData()
       formData.append("isProfileOpen", profileState)
       const { data } = await changeUserData(formData)
+      console.log(data)
 
       showSnackbar("success", "Profile permissions updated")
       updateUserProfilePermission(profileStateToSave)
@@ -73,6 +74,7 @@ export const Visibility: React.FC<VisibilityProperties> = ({
       const formData = new FormData()
       formData.append("isAssetsOpen", assetsState)
       const { data } = await changeUserData(formData)
+      console.log(data)
 
       showSnackbar("success", "Assets permissions updated")
 
@@ -102,7 +104,7 @@ export const Visibility: React.FC<VisibilityProperties> = ({
           aria-labelledby="demo-radio-buttons-group-label"
           value={profileVisibility}
           name="radio-buttons-group"
-          onChange={(event, value) => updateProfileVisibility(value)}
+          onChange={(_event, value) => updateProfileVisibility(value)}
         >
           <FormControlLabel
             value="open"
@@ -146,7 +148,7 @@ export const Visibility: React.FC<VisibilityProperties> = ({
           aria-labelledby="demo-radio-buttons-group-label"
           value={isAssetsOpen}
           name="radio-buttons-group"
-          onChange={(event, value) => updateAssetsVisibility(value)}
+          onChange={(_event, value) => updateAssetsVisibility(value)}
         >
           <FormControlLabel
             value="full"

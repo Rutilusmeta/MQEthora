@@ -1,5 +1,5 @@
 import { Box } from "@mui/material"
-import React from "react"
+
 import BezierCurve from "../../components/icons/BezierCurve"
 
 type Properties = {

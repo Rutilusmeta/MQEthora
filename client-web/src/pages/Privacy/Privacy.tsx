@@ -1,5 +1,6 @@
 import React, { useState } from "react"
 import { Box, Tab, Tabs } from "@mui/material"
+
 import { Blocking } from "./Blocking"
 import { DocumentsShare } from "./DocumentsShareTab"
 import { ManageData } from "./ManageData"
@@ -17,7 +18,7 @@ const containerStyle = { display: "flex", justifyContent: "center" }
 const Privacy = () => {
   const [tab, setTab] = useState(0)
 
-  const handleChangeTab = (event: React.SyntheticEvent, newValue: number) => {
+  const handleChangeTab = (_event: React.SyntheticEvent, newValue: number) => {
     setTab(newValue)
   }
 

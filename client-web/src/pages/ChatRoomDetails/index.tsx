@@ -1,9 +1,10 @@
-import React, { useEffect } from "react"
+import { useEffect } from "react"
 import { Container } from "@mui/material"
+import { useParams } from "react-router"
+
 import ChatDetailCard from "./ChatDetailCard"
 import MembersList from "./MembersList"
 import xmpp from "../../xmpp"
-import { useParams } from "react-router"
 
 export default function ChatRoomDetails() {
   const { roomJID }: any = useParams()
@@ -11,6 +12,7 @@ export default function ChatRoomDetails() {
     xmpp.getRoomMemberInfo(roomJID)
     xmpp.getRoomInfo(roomJID)
   }, [])
+
   return (
     <Container maxWidth="xl">
       <ChatDetailCard />

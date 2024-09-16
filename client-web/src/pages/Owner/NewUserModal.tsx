@@ -1,4 +1,5 @@
-import React, { useState } from "react"
+// import React, { useState } from "react"
+import React from "react"
 import Dialog from "@mui/material/Dialog"
 import DialogTitle from "@mui/material/DialogTitle"
 import Box from "@mui/material/Box"
@@ -6,16 +7,14 @@ import IconButton from "@mui/material/IconButton"
 import CloseIcon from "@mui/icons-material/Close"
 import { useFormik } from "formik"
 import TextField from "@mui/material/TextField"
-import { useStoreState } from "../../store"
-import FormControl from "@mui/material/FormControl"
-import InputLabel from "@mui/material/InputLabel"
 import LoadingButton from "@mui/lab/LoadingButton"
-import * as http from "../../http"
 import DialogContent from "@mui/material/DialogContent"
 import DialogContentText from "@mui/material/DialogContentText"
 import Button from "@mui/material/Button"
 import DialogActions from "@mui/material/DialogActions"
-import { NativeSelect } from "@mui/material"
+
+import { useStoreState } from "../../store"
+import * as http from "../../http"
 import { useSnackbar } from "../../context/SnackbarContext"
 
 type TProperties = {
@@ -32,7 +31,6 @@ export default function NewUserModal({
   appId,
 }: TProperties) {
   const apps = useStoreState((state) => state.apps)
-  const addAppUsers = useStoreState((state) => state.addAppUsers)
   // const [loading, setLoading] = useState(false);
   const { showSnackbar } = useSnackbar()
   const formik = useFormik({

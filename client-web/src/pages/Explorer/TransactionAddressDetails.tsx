@@ -1,6 +1,7 @@
 import { Box, Typography } from "@mui/material"
 import React, { useEffect, useState } from "react"
 import { useParams } from "react-router"
+
 import { FullPageSpinner } from "../../components/FullPageSpinner"
 import { getTransactions } from "../../http"
 import { ExplorerRespose, ITransaction } from "../Profile/types"
@@ -10,7 +11,7 @@ interface ITransactionAddressDetailsProperties {}
 
 const TransactionAddressDetails: React.FC<
   ITransactionAddressDetailsProperties
-> = (properties) => {
+> = (_properties) => {
   const [transactions, setTransactions] = useState<
     ExplorerRespose<ITransaction[]>
   >({ items: [], total: 0, offset: 0, limit: 0 })

@@ -6,12 +6,10 @@ import IconButton from "@mui/material/IconButton"
 import CloseIcon from "@mui/icons-material/Close"
 import { useFormik } from "formik"
 import TextField from "@mui/material/TextField"
-import { useStoreState } from "../../store"
 import LoadingButton from "@mui/lab/LoadingButton"
+
+import { useStoreState } from "../../store"
 import * as http from "../../http"
-import FormControlLabel from "@mui/material/FormControlLabel"
-import Checkbox from "@mui/material/Checkbox"
-import { Button, Typography } from "@mui/material"
 import { useSnackbar } from "../../context/SnackbarContext"
 
 type TProperties = {
@@ -26,7 +24,7 @@ export default function NewAppModal({ open, setOpen }: TProperties) {
   const user = useStoreState((state) => state.user)
 
   const [loading, setLoading] = useState(false)
-  const [preview, setPreview] = useState<string>("")
+  const [_preview, setPreview] = useState<string>("")
   const { showSnackbar } = useSnackbar()
   const formik = useFormik({
     initialValues: {
@@ -96,24 +94,26 @@ export default function NewAppModal({ open, setOpen }: TProperties) {
     },
   })
 
-  const onImage = (event: any) => {
-    const input = event.target as HTMLInputElement
+  // const onImage = (event: any) => {
+  //   const input = event.target as HTMLInputElement
 
-    if (input.files) {
-      const reader = new FileReader()
+  //   if (input.files) {
+  //     const reader = new FileReader()
 
-      reader.addEventListener("load", (e) => {
-        if (e && e.target?.result) {
-          setPreview(e.target.result as string)
-        }
-      })
-      reader.readAsDataURL(input.files[0])
-    }
-  }
+  //     reader.addEventListener("load", (e) => {
+  //       if (e && e.target?.result) {
+  //         setPreview(e.target.result as string)
+  //       }
+  //     })
+  //     reader.readAsDataURL(input.files[0])
+  //   }
+  // }
+
   const onClose = () => {
     setOpen(false)
     setPreview("")
   }
+
   return (
     <Dialog onClose={onClose} open={open}>
       <Box sx={{ padding: 1 }}>
