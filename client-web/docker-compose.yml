@@ -2,12 +2,21 @@ version: "3.7"
 services:
   frontend:
     image: dappros/web
+    build: ./frontend
     restart: always
     ports:
       - "8080:80"
     volumes:
-      - ./init.sh:/init.sh
+      - ./frontend/init.sh:/init.sh
     environment:
       - API_URL=https://xxx.domain.con/v1
       - APP_DOMAIN=domain.com
     command: ["sh", "/init.sh"]
+
+  backend:
+    build: ./backend
+    restart: always
+    ports:
+      - "3000:3000"
+    environment:
+      - NODE_ENV=development
